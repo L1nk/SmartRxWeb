@@ -1,0 +1,2 @@
+module MedicationConflictToMedicationsHelper
+end

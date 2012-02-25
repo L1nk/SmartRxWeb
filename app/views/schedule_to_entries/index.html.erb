@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Schedule</th>
-    <th>User</th>
+    <th>Entry</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @schedule_to_entries.each do |schedule_to_entry| %>
   <tr>
     <td><%= schedule_to_entry.schedule_id %></td>
-    <td><%= schedule_to_entry.user_id %></td>
+    <td><%= schedule_to_entry.entry_id %></td>
     <td><%= link_to 'Show', schedule_to_entry %></td>
     <td><%= link_to 'Edit', edit_schedule_to_entry_path(schedule_to_entry) %></td>
     <td><%= link_to 'Destroy', schedule_to_entry, confirm: 'Are you sure?', method: :delete %></td>

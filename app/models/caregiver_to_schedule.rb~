@@ -1,0 +1,3 @@
+class CaregiverToSchedule < ActiveRecord::Base
+  
+end

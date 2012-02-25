@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Schedule:</b>
+  <%= @caregiver_to_schedule.schedule_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @caregiver_to_schedule.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_caregiver_to_schedule_path(@caregiver_to_schedule) %> |
+<%= link_to 'Back', caregiver_to_schedules_path %>

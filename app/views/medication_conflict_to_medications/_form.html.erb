@@ -1,0 +1,29 @@
+<%= form_for(@medication_conflict_to_medication) do |f| %>
+  <% if @medication_conflict_to_medication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medication_conflict_to_medication.errors.count, "error") %> prohibited this medication_conflict_to_medication from being saved:</h2>
+
+      <ul>
+      <% @medication_conflict_to_medication.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medication_conflict_id %><br />
+    <%= f.number_field :medication_conflict_id %>
+  </div>
+  <div class="field">
+    <%= f.label :medication_id %><br />
+    <%= f.number_field :medication1_id %>
+  </div>
+  <div class="field">
+    <%= f.label :medication_id %><br />
+    <%= f.number_field :medication2_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

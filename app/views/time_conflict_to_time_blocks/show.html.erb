@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Time conflict:</b>
+  <%= @time_conflict_to_time_block.time_conflict_id %>
+</p>
+
+<p>
+  <b>Time block id1:</b>
+  <%= @time_conflict_to_time_block.time_block1_id %>
+</p>
+
+<p>
+  <b>Time block id2:</b>
+  <%= @time_conflict_to_time_block.time_block2_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_time_conflict_to_time_block_path(@time_conflict_to_time_block) %> |
+<%= link_to 'Back', time_conflict_to_time_blocks_path %>

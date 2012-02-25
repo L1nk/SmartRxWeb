@@ -1,0 +1,29 @@
+<%= form_for(@time_conflict_to_time_block) do |f| %>
+  <% if @time_conflict_to_time_block.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@time_conflict_to_time_block.errors.count, "error") %> prohibited this time_conflict_to_time_block from being saved:</h2>
+
+      <ul>
+      <% @time_conflict_to_time_block.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :time_conflict_id %><br />
+    <%= f.number_field :time_conflict_id %>
+  </div>
+  <div class="field">
+    <%= f.label :time_block_id1 %><br />
+    <%= f.number_field :time_block1_id %>
+  </div>
+  <div class="field">
+    <%= f.label :time_block_id2 %><br />
+    <%= f.number_field :time_block2_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

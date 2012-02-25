@@ -1,4 +1,12 @@
 Drugs::Application.routes.draw do
+  resources :caregiver_to_schedules
+
+  resources :schedule_to_alerts
+
+  resources :time_conflict_to_time_blocks
+
+  resources :medication_conflict_to_medications
+
   resources :time_blocks
 
   resources :time_conflicts

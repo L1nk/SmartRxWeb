@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217075235) do
+ActiveRecord::Schema.define(:version => 20120225232527) do
 
   create_table "caregiver_permission_levels", :force => true do |t|
     t.integer  "caregiver_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "caregiver_to_schedules", :force => true do |t|
+    t.integer  "schedule_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "entries", :force => true do |t|
     t.integer  "medication_id"
     t.integer  "time_block_id"
@@ -31,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
     t.boolean  "is_taken"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "medication_conflict_to_medications", :force => true do |t|
+    t.integer  "medication_conflict_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "medication1_id"
+    t.integer  "medication2_id"
   end
 
   create_table "medication_conflicts", :force => true do |t|
@@ -43,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
   create_table "medications", :force => true do |t|
     t.integer  "user_id"
     t.integer  "alert_id"
-    t.integer  "time_block_id"
     t.string   "name"
     t.string   "importance"
     t.float    "quantity_per_dose"
@@ -53,15 +67,23 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
     t.text     "comment"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "entry_id"
   end
 
   create_table "schedule_alerts", :force => true do |t|
     t.integer  "medication_id"
-    t.integer  "user_id"
     t.datetime "alert_delta_time"
     t.string   "alert_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "entry_id"
+  end
+
+  create_table "schedule_to_alerts", :force => true do |t|
+    t.integer  "schedule_id"
+    t.integer  "alert_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "schedule_to_entries", :force => true do |t|
@@ -69,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "entry_id"
   end
 
   create_table "schedules", :force => true do |t|
@@ -79,7 +102,6 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
   end
 
   create_table "time_blocks", :force => true do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "description"
     t.string   "frequency"
@@ -87,6 +109,15 @@ ActiveRecord::Schema.define(:version => 20120217075235) do
     t.date     "date"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "entry_id"
+  end
+
+  create_table "time_conflict_to_time_blocks", :force => true do |t|
+    t.integer  "time_conflict_id"
+    t.integer  "time_block1_id"
+    t.integer  "time_block2_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "time_conflicts", :force => true do |t|

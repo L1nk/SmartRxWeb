@@ -1,0 +1,4 @@
+class ScheduleToAlert < ActiveRecord::Base
+  belongs_to :schedule
+  
+end

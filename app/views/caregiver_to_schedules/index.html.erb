@@ -1,0 +1,25 @@
+<h1>Listing caregiver_to_schedules</h1>
+
+<table>
+  <tr>
+    <th>Schedule</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @caregiver_to_schedules.each do |caregiver_to_schedule| %>
+  <tr>
+    <td><%= caregiver_to_schedule.schedule_id %></td>
+    <td><%= caregiver_to_schedule.user_id %></td>
+    <td><%= link_to 'Show', caregiver_to_schedule %></td>
+    <td><%= link_to 'Edit', edit_caregiver_to_schedule_path(caregiver_to_schedule) %></td>
+    <td><%= link_to 'Destroy', caregiver_to_schedule, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Caregiver to schedule', new_caregiver_to_schedule_path %>

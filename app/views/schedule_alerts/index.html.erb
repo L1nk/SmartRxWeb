@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Medication</th>
-    <th>User</th>
+    <th>Entry</th>
     <th>Alert delta time</th>
     <th>Alert type</th>
     <th></th>
@@ -14,7 +14,7 @@
 <% @schedule_alerts.each do |schedule_alert| %>
   <tr>
     <td><%= schedule_alert.medication_id %></td>
-    <td><%= schedule_alert.user_id %></td>
+    <td><%= schedule_alert.entry_id %></td>
     <td><%= schedule_alert.alert_delta_time %></td>
     <td><%= schedule_alert.alert_type %></td>
     <td><%= link_to 'Show', schedule_alert %></td>

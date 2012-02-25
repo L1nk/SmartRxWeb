@@ -1,0 +1,6 @@
+class AddMedicationId1And2ToMedicationConflictToMedications < ActiveRecord::Migration
+  def change
+    add_column :medication_conflict_to_medications, :medication_id1, :integer
+    add_column :medication_conflict_to_medications, :medication_id2, :integer
+  end
+end

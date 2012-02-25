@@ -1,0 +1,2 @@
+module ScheduleToAlertsHelper
+end

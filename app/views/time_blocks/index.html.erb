@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>User</th>
+    <th>Entry</th>
     <th>Name</th>
     <th>Description</th>
     <th>Frequency</th>
@@ -15,7 +15,7 @@
 
 <% @time_blocks.each do |time_block| %>
   <tr>
-    <td><%= time_block.user_id %></td>
+    <td><%= time_block.entry_id %></td>
     <td><%= time_block.name %></td>
     <td><%= time_block.description %></td>
     <td><%= time_block.frequency %></td>

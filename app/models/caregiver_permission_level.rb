@@ -1,3 +1,3 @@
 class CaregiverPermissionLevel < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :caregiver, :class_name => 'User'
 end
