@@ -1,4 +1,26 @@
 Drugs::Application.routes.draw do
+  resources :time_blocks
+
+  resources :time_conflicts
+
+  resources :caregiver_permission_levels
+
+  resources :user_infos
+
+  devise_for :users
+
+  resources :medication_conflicts
+
+  resources :medications
+
+  resources :schedule_alerts
+
+  resources :schedule_to_entries
+
+  resources :entries
+
+  resources :schedules
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +70,7 @@ Drugs::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'schedules#index'
 
   # See how all your routes lay out with "rake routes"
 

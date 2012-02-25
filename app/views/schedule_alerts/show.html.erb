@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medication:</b>
+  <%= @schedule_alert.medication_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @schedule_alert.user_id %>
+</p>
+
+<p>
+  <b>Alert delta time:</b>
+  <%= @schedule_alert.alert_delta_time %>
+</p>
+
+<p>
+  <b>Alert type:</b>
+  <%= @schedule_alert.alert_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_schedule_alert_path(@schedule_alert) %> |
+<%= link_to 'Back', schedule_alerts_path %>

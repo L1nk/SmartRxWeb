@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Schedule:</b>
+  <%= @medication_conflict.schedule_id %>
+</p>
+
+<p>
+  <b>Is dismissed:</b>
+  <%= @medication_conflict.is_dismissed %>
+</p>
+
+
+<%= link_to 'Edit', edit_medication_conflict_path(@medication_conflict) %> |
+<%= link_to 'Back', medication_conflicts_path %>

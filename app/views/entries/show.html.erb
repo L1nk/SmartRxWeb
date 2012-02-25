@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medication:</b>
+  <%= @entry.medication_id %>
+</p>
+
+<p>
+  <b>Time block:</b>
+  <%= @entry.time_block_id %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @entry.date %>
+</p>
+
+<p>
+  <b>Is taken:</b>
+  <%= @entry.is_taken %>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

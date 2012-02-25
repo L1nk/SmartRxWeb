@@ -1,0 +1,41 @@
+<%= form_for(@caregiver_permission_level) do |f| %>
+  <% if @caregiver_permission_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@caregiver_permission_level.errors.count, "error") %> prohibited this caregiver_permission_level from being saved:</h2>
+
+      <ul>
+      <% @caregiver_permission_level.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :caregiver_id %><br />
+    <%= f.number_field :caregiver_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :can_edit_alerts %><br />
+    <%= f.check_box :can_edit_alerts %>
+  </div>
+  <div class="field">
+    <%= f.label :can_edit_schedule %><br />
+    <%= f.check_box :can_edit_schedule %>
+  </div>
+  <div class="field">
+    <%= f.label :can_edit_time_conflicts %><br />
+    <%= f.check_box :can_edit_time_conflicts %>
+  </div>
+  <div class="field">
+    <%= f.label :can_edit_medication_conflicts %><br />
+    <%= f.check_box :can_edit_medication_conflicts %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

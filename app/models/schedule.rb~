@@ -1,0 +1,4 @@
+class Schedule < ActiveRecord::Base
+  has_many :schedule_to_entries
+  has_many :users
+end

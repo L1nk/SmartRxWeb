@@ -1,0 +1,25 @@
+<h1>Listing time_conflicts</h1>
+
+<table>
+  <tr>
+    <th>Schedule</th>
+    <th>Is dismissed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @time_conflicts.each do |time_conflict| %>
+  <tr>
+    <td><%= time_conflict.schedule_id %></td>
+    <td><%= time_conflict.is_dismissed %></td>
+    <td><%= link_to 'Show', time_conflict %></td>
+    <td><%= link_to 'Edit', edit_time_conflict_path(time_conflict) %></td>
+    <td><%= link_to 'Destroy', time_conflict, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Time conflict', new_time_conflict_path %>

@@ -1,0 +1,2 @@
+class ScheduleToEntry < ActiveRecord::Base
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medication_id: 1
+  time_block_id: 1
+  date: 2012-02-16 14:39:38
+  is_taken: false
+
+two:
+  medication_id: 1
+  time_block_id: 1
+  date: 2012-02-16 14:39:38
+  is_taken: false

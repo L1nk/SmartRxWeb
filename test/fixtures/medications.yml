@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  alert_id: 1
+  time_block_id: 1
+  name: MyString
+  importance: MyString
+  quantity_per_dose: 
+  number_of_doses: 
+  is_critical: false
+  directions: MyString
+  comment: MyText
+
+two:
+  user_id: 1
+  alert_id: 1
+  time_block_id: 1
+  name: MyString
+  importance: MyString
+  quantity_per_dose: 
+  number_of_doses: 
+  is_critical: false
+  directions: MyString
+  comment: MyText

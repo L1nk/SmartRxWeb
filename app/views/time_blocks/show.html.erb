@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @time_block.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @time_block.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @time_block.description %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%= @time_block.frequency %>
+</p>
+
+<p>
+  <b>Days for frequency:</b>
+  <%= @time_block.days_for_frequency %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @time_block.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_time_block_path(@time_block) %> |
+<%= link_to 'Back', time_blocks_path %>
