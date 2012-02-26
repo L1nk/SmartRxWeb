@@ -1,4 +1,14 @@
 Drugs::Application.routes.draw do
+  
+  resources :home do
+    collection do
+      get 'view_schedule'
+      post 'view_schedule'
+    end
+  end
+  
+  #get "home/index"
+
   resources :caregiver_to_schedules
 
   resources :schedule_to_alerts
@@ -68,7 +78,7 @@ Drugs::Application.routes.draw do
   #       get 'recent', :on => :collection
   #     end
   #   end
-
+  #Cancel my account
   # Sample resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
@@ -78,7 +88,7 @@ Drugs::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'schedules#index'
+  root :to => 'home#index', :as => 'home'
 
   # See how all your routes lay out with "rake routes"
 
