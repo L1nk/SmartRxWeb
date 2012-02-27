@@ -1,9 +1,18 @@
 Drugs::Application.routes.draw do
-  
+
+  resources :view_schedule do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
+
+  #get "view_schedule/index"
+
   resources :home do
     collection do
-      get 'view_schedule'
-      post 'view_schedule'
+      get 'index'
+      post 'index'
     end
   end
   

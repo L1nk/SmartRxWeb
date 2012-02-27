@@ -1,0 +1,9 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Title</h1>
+
+<%= button_to 'View Schedule', view_schedule_path(:user_id => current_user.id) %>
+<%= button_to 'Edit Schedule'%>
+<%= button_to 'Checklist' %>

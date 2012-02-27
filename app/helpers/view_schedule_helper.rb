@@ -1,0 +1,2 @@
+module ViewScheduleHelper
+end

@@ -25,6 +25,7 @@ class SchedulesController < ApplicationController
   # GET /schedules/new.json
   def new
     @schedule = Schedule.new
+    @schedule.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb

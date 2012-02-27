@@ -1,0 +1,4 @@
+class ViewScheduleController < ApplicationController
+  def index
+  end
+end
