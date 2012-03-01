@@ -1,16 +1,14 @@
 class CreateEntries < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :entries do |t|
-      t.integer :medication_id
-      t.integer :time_block_id
-      t.datetime :date
-      t.boolean :is_taken
+      t.date :start_date
+      t.date :end_date
+      t.time :start_time
+      t.time :end_time
+      t.string :type
+      t.integer :type_id
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :entries
   end
 end

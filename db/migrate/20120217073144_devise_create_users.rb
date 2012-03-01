@@ -36,6 +36,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Token authenticatable
       # t.string :authentication_token
 
+      t.integer :caregiver_id
+      t.string :fname
+      t.string :lname
+      t.string :phone_number
+      t.string :is_caregiver
+      t.string :has_caregiver
+      t.integer :schedule_id
+
 
       t.timestamps
     end
