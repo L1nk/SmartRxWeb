@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_one :schedule
   has_one :caregiver, :class_name => 'User'
   has_many :caregiver_permission_levels
+  has_many :caregiver_to_schedules
+  has_many :medications
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

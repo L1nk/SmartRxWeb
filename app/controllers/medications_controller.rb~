@@ -42,8 +42,6 @@ class MedicationsController < ApplicationController
   def create
     @medication = Medication.new(params[:medication])
 
-    @medication.user = current_user
-
     respond_to do |format|
       if @medication.save
         format.html { redirect_to @medication, notice: 'Medication was successfully created.' }

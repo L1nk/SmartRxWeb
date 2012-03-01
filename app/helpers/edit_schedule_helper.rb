@@ -1,0 +1,2 @@
+module EditScheduleHelper
+end

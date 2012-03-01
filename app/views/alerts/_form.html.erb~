@@ -10,11 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :medication_id %><br />
-    <%= f.number_field :medication_id %>
-  </div>
+  
   <div class="field">
     <%= f.label :entry_id %><br />
     <%= f.number_field :entry_id %>

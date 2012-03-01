@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Medication:</b>
-  <%= @alert.medication_id %>
-</p>
-
-<p>
   <b>User:</b>
   <%= @alert.entry_id %>
 </p>

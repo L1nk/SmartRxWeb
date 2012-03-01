@@ -4,4 +4,5 @@ class Schedule < ActiveRecord::Base
   belongs_to :user
   has_many :caregiver_to_schedules, :dependent => :destroy
   has_many :time_conflicts, :dependent => :destroy
+  has_many :medication_conflicts
 end

@@ -1,0 +1,17 @@
+class UsersController < Devise::SessionsController
+  def create
+    super
+    
+    @user.schedule = Schedule.create
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+        format.json { render json: @schedule, status: :created, location: @schedule }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @schedule.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+end
