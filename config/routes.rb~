@@ -1,5 +1,21 @@
 Drugs::Application.routes.draw do
 
+  post "medications/new"
+
+  resources :checklist do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
+
+  resources :edit_schedule do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
+
   resources :view_schedule do
     collection do
       get 'index'
@@ -9,32 +25,27 @@ Drugs::Application.routes.draw do
 
   #get "view_schedule/index"
 
-  #resources :home do
-  #  collection do
-  #    get 'view_schedule'
-  #    post 'view_schedule'
-  #  end
-  #end
+  resources :home do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
   
-  get "home/index"
+  #get "home/index"
 
   resources :caregiver_to_schedules
 
-  resources :schedule_to_alerts
-
-  resources :time_conflict_to_time_blocks
-
-  resources :medication_conflict_to_medications
-
-  resources :time_blocks
-
-  resources :time_conflicts
-
   resources :caregiver_permission_levels
 
-  resources :user_infos
+  devise_for :users, :controllers => { :registrations => 'registrations' }
 
-  devise_for :users
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new'
+    get '/logout' => 'devise/sessions#destroy'
+  end
+
+  resources :users, :controllers => "users"
 
   resources :medication_conflicts
 
