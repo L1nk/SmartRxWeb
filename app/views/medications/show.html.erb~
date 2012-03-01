@@ -12,7 +12,7 @@
 
 <p>
   <b>Time block:</b>
-  <%= @medication.time_block_id %>
+  <%= @medication.entry_id %>
 </p>
 
 <p>

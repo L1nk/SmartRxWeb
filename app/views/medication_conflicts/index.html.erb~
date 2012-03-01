@@ -11,8 +11,8 @@
 
 <% @medication_conflicts.each do |medication_conflict| %>
   <tr>
-    <td><%= medication_conflict.medication1_id %></td>
-    <td><%= medication_conflict.medicatino2_id %></td>
+    <td><%= medication_conflict.schedule_id %></td>
+    <td><%= medication_conflict.is_dismissed %></td>
     <td><%= link_to 'Show', medication_conflict %></td>
     <td><%= link_to 'Edit', edit_medication_conflict_path(medication_conflict) %></td>
     <td><%= link_to 'Destroy', medication_conflict, confirm: 'Are you sure?', method: :delete %></td>

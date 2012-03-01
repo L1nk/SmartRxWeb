@@ -21,13 +21,13 @@
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @entry.type %>
+  <b>End time:</b>
+  <%= @entry.end_time %>
 </p>
 
 <p>
-  <b>Type id:</b>
-  <%= @entry.type_id %>
+  <b>End time:</b>
+  <%= @entry.end_time %>
 </p>
 
 

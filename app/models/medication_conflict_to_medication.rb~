@@ -1,5 +1,0 @@
-class MedicationConflictToMedication < ActiveRecord::Base
-  belongs_to :medication_conflict
-  belongs_to :medication_id1, :class_name => 'Medication'
-  belongs_to :medication_id2, :class_name => 'Medication'
-end

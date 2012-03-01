@@ -1,0 +1,6 @@
+<h1>Edit Schedule</h1>
+
+<%= button_to 'Add a Pill', '' %>
+<%= button_to 'Add Event', '' %>
+<%= button_to 'Pill List', '' %>
+<%= button_to 'Edit Schedule', '' %>

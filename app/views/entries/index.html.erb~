@@ -19,8 +19,6 @@
     <td><%= entry.end_date %></td>
     <td><%= entry.start_time %></td>
     <td><%= entry.end_time %></td>
-    <td><%= entry.type %></td>
-    <td><%= entry.type_id %></td>
     <td><%= link_to 'Show', entry %></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
     <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete %></td>

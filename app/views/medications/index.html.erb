@@ -11,7 +11,7 @@
     <th>Number of doses</th>
     <th>Is critical</th>
     <th>Directions</th>
-    <th>Comment</th>
+    <th>Comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,7 +28,7 @@
     <td><%= medication.number_of_doses %></td>
     <td><%= medication.is_critical %></td>
     <td><%= medication.directions %></td>
-    <td><%= medication.comment %></td>
+    <td><%= medication.comments %></td>
     <td><%= link_to 'Show', medication %></td>
     <td><%= link_to 'Edit', edit_medication_path(medication) %></td>
     <td><%= link_to 'Destroy', medication, confirm: 'Are you sure?', method: :delete %></td>

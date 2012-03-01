@@ -2,12 +2,12 @@
 
 <p>
   <b>Schedule:</b>
-  <%= @medication_conflict.medication1_id %>
+  <%= @medication_conflict.schedule_id %>
 </p>
 
 <p>
   <b>Is dismissed:</b>
-  <%= @medication_conflict.medication2_id %>
+  <%= @medication_conflict.is_dismissed %>
 </p>
 
 
