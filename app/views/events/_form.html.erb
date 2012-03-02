@@ -24,8 +24,8 @@
     <%= time_select :entry, :end_time %>
   </div>
   <div class="field">
-    <%= label_tag :alert_id, "Alert id: " %><br />
-    <%= number_field_tag :alert_id %>
+    <%= label_tag :alert_id, "Alert?: " %><br />
+    <%= check_box_tag :has_alert %>
   </div>
   <div class="actions">
     <%= submit_tag "submit" %>

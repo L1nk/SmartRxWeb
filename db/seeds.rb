@@ -22,8 +22,6 @@ EventConflict.delete_all
 
 MedicationConflict.delete_all
 
-User.delete_all
-
 CaregiverToSchedule.delete_all
 
 CaregiverPermissionLevel.delete_all

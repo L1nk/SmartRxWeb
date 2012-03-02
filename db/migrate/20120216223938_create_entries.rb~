@@ -5,7 +5,7 @@ class CreateEntries < ActiveRecord::Migration
       t.date :end_date
       t.time :start_time
       t.time :end_time
-      t.string :type
+      t.string :type_name
       t.integer :type_id
 
       t.timestamps

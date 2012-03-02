@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(:version => 20120301100118) do
 
   create_table "alerts", :force => true do |t|
-    t.integer  "med_event_id"
+    t.integer  "event_id"
+    t.integer  "medication_id"
     t.string   "alert_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "caregiver_permission_levels", :force => true do |t|
@@ -43,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20120301100118) do
     t.date     "end_date"
     t.time     "start_time"
     t.time     "end_time"
-    t.string   "type_name"
-    t.integer  "type_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "event_id"
+    t.integer  "medication_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "event_conflicts", :force => true do |t|
