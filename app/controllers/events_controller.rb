@@ -57,21 +57,28 @@ class EventsController < ApplicationController
     @event = Event.new(:name => params[:name],
     		       :description => params[:description])
 
-    @event.entry = Entry.new(:type => 'event',
-                             :start_date => params[:start_date],
-                             :end_date => params[:end_date],
-                             :start_time => params[:start_time],
-                             :end_time => params[:end_time])
+    #@event.entry = Entry.new(:type_name => 'event',
+    #                         :start_date => params[:start_date],
+    #                         :end_date => params[:end_date],
+    #                         :start_time => params[:start_time],
+    #                         :end_time => params[:end_time])
     
+    #@event.entry = Entry.new(params[:entry])
+
+    #@event.entry.type_name = 'event'
+
+    @entry = @event.build_entry(params[:entry])
+
+    @entry.type_name = 'event'
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
 
+        @entry.type_id = @event.id
+        @entry.save
         
-
-        #@event.save
-
       else
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }

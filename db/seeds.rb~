@@ -27,3 +27,6 @@ User.delete_all
 CaregiverToSchedule.delete_all
 
 CaregiverPermissionLevel.delete_all
+
+
+
