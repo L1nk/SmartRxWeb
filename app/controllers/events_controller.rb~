@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     @event = Event.new(:name => params[:name],
     		       :description => params[:description])
 
-    @event.entry = Entry.new(:type => 'event',
+    @event.entry = Entry.new(:type_name => 'event',
                              :start_date => params[:start_date],
                              :end_date => params[:end_date],
                              :start_time => params[:start_time],

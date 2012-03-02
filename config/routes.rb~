@@ -1,6 +1,10 @@
 Drugs::Application.routes.draw do
 
-  post "medications/new"
+  resources :event_conflicts
+
+  resources :events
+  post "events/new"
+  post "events/new_event_entry"
 
   resources :checklist do
     collection do
@@ -50,8 +54,9 @@ Drugs::Application.routes.draw do
   resources :medication_conflicts
 
   resources :medications
+  post "medications/new"
 
-  resources :schedule_alerts
+  resources :alerts
 
   resources :schedule_to_entries
 

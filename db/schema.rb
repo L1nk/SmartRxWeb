@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20120301100118) do
     t.date     "end_date"
     t.time     "start_time"
     t.time     "end_time"
-    t.string   "type"
+    t.string   "type_name"
     t.integer  "type_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120301100118) do
   end
 
   create_table "events", :force => true do |t|
+    t.integer  "entry_id"
     t.string   "name"
     t.text     "description"
     t.integer  "alert_id"

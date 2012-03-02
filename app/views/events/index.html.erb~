@@ -13,7 +13,6 @@
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= event.entry_id %></td>
     <td><%= event.name %></td>
     <td><%= event.description %></td>
     <td><%= event.alert_id %></td>
