@@ -54,24 +54,23 @@ class EventsController < ApplicationController
   end
 
   def create_event_entry
-    @event = Event.new(:name => params[:name],
-    		       :description => params[:description])
-
+    
+    @event = Event.new(params[:event])
     @entry = @event.build_entry(params[:entry])
-
-    @entry.type_name = 'event'
-
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
+        
+        @entry.event_id = @event.id
 
-        @entry.type_id = @event.id
+        has_alert = params[:has_alert]
         
         if @entry.save
-          if params[:has_alert]
+          if has_alert
             
-            @event.create_alert(:med_event_id => @event.id)
+            @event.create_alert(params[:alert])
             
           end
         end

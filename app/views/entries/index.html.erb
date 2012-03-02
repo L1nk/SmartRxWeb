@@ -6,8 +6,8 @@
     <th>End date</th>
     <th>Start time</th>
     <th>End time</th>
-    <th>Type name</th>
-    <th>Type id</th>
+    <th>Event id</th>
+    <th>Medication id</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,8 +19,8 @@
     <td><%= entry.end_date %></td>
     <td><%= entry.start_time %></td>
     <td><%= entry.end_time %></td>
-    <td><%= entry.type_name %></td>
-    <td><%= entry.type_id %></td>
+    <td><%= entry.event_id %></td>
+    <td><%= entry.medication_id %></td>
     <td><%= link_to 'Show', entry %></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
     <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,11 +1,11 @@
 <%= form_tag('create_event_entry') do %>
   <div class="field">
     <%= label_tag :name, "Name: " %><br />
-    <%= text_field_tag :name %>
+    <%= text_field :event, :name %>
   </div>
   <div class="field">
     <%= label_tag :description, "Description: " %><br />
-    <%= text_area_tag :description %>
+    <%= text_area_tag :event, :description %>
   </div>
   <div class="field">
     <%= label_tag :start_date, "Start date: " %><br />
@@ -24,7 +24,7 @@
     <%= time_select :entry, :end_time %>
   </div>
   <div class="field">
-    <%= label_tag :alert_id, "Alert id: " %><br />
+    <%= label_tag :alert_id, "Alert?: " %><br />
     <%= check_box_tag :has_alert %>
   </div>
   <div class="actions">

@@ -1,11 +1,11 @@
 <%= form_tag('create_event_entry') do %>
   <div class="field">
     <%= label_tag :name, "Name: " %><br />
-    <%= text_field_tag :name %>
+    <%= text_field :event, :name %>
   </div>
   <div class="field">
     <%= label_tag :description, "Description: " %><br />
-    <%= text_area_tag :description %>
+    <%= text_area :event, :description %>
   </div>
   <div class="field">
     <%= label_tag :start_date, "Start date: " %><br />

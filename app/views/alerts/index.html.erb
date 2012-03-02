@@ -2,7 +2,8 @@
 
 <table>
   <tr>
-    <th>Med Event id</th>
+    <th>Event id</th>
+    <th>Medication id</th>
     <th>Alert type</th>
     <th></th>
     <th></th>
@@ -11,7 +12,8 @@
 
 <% @alerts.each do |alert| %>
   <tr>
-    <td><%= alert.med_event_id %></td>
+    <td><%= alert.event_id %></td>
+    <td><%= alert.medication_id %></td>
     <td><%= alert.alert_type %></td>
     <td><%= link_to 'Show', alert %></td>
     <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
