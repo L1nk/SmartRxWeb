@@ -1,4 +1,4 @@
-<%= form_tag('create_medication_entry') do %>
+<%= form_tag({:action => :update}, {:method => :put}) do %>
   <div class="field">
     <%= label_tag :name %><br />
     <%= text_field :medication, :name %>
@@ -48,6 +48,6 @@
     <%= check_box_tag :has_alert %>
   </div>
   <div class="actions">
-    <%= submit_tag "Add Medication" %>
+    <%= submit_tag "Update Medication" %>
   </div>
 <% end %>

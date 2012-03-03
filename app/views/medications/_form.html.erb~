@@ -1,57 +1,57 @@
-<%= form_for(@medication) do |f| %>
-  <% if @medication.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@medication.errors.count, "error") %> prohibited this medication from being saved:</h2>
-
-      <ul>
-      <% @medication.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
+<%= form_tag('create_medication_entry') do %>
   <div class="field">
-    <%= f.label :alert_id %><br />
-    <%= f.number_field :alert_id %>
+    <%= label_tag :entry_id %><br />
+    <%= number_field :medication, :entry_id %>
   </div>
   <div class="field">
-    <%= f.label :alert_id %><br />
-    <%= f.number_field :alert_id %>
+    <%= label_tag :name %><br />
+    <%= text_field :medication, :name %>
   </div>
   <div class="field">
-    <%= f.label :entry_id %><br />
-    <%= f.number_field :entry_id %>
+    <%= label_tag :importance %><br />
+    <%= text_field :medication, :importance %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= label_tag :quantity_per_dose %><br />
+    <%= text_field :medication, :quantity_per_dose %>
   </div>
   <div class="field">
-    <%= f.label :importance %><br />
-    <%= f.text_field :importance %>
+    <%= label_tag :number_of_doses %><br />
+    <%= text_field :medication, :number_of_doses %>
   </div>
   <div class="field">
-    <%= f.label :quantity_per_dose %><br />
-    <%= f.text_field :quantity_per_dose %>
+    <%= label_tag :is_critical %><br />
+    <%= check_box :medication, :is_critical %>
   </div>
   <div class="field">
-    <%= f.label :number_of_doses %><br />
-    <%= f.text_field :number_of_doses %>
+    <%= label_tag :directions %><br />
+    <%= text_field :medication, :directions %>
   </div>
   <div class="field">
-    <%= f.label :is_critical %><br />
-    <%= f.check_box :is_critical %>
+    <%= label_tag :comments %><br />
+    <%= text_area :medication, :comments %>
   </div>
   <div class="field">
-    <%= f.label :directions %><br />
-    <%= f.text_field :directions %>
+    <%= label_tag :start_date, "Start date: " %><br />
+    <%= date_select :entry, :start_date %>
   </div>
   <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
+    <%= label_tag :end_date, "End date: " %><br />
+    <%= date_select :entry, :end_date %>
+  </div>
+  <div class="field">
+    <%= label_tag :start_time, "Start time: " %><br />
+    <%= time_select :entry, :start_time %>
+  </div>
+  <div class="field">
+    <%= label_tag :end_time, "End time: " %><br />
+    <%= time_select :entry, :end_time %>
+  </div>
+  <div class="field">
+    <%= label_tag :has_alert %><br />
+    <%= check_box_tag :has_alert %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag "Add Medication" %>
   </div>
 <% end %>

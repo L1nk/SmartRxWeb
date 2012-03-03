@@ -1,10 +1,17 @@
 Drugs::Application.routes.draw do
 
+  resources :medications_list do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
+  
   resources :event_conflicts
 
   resources :events
   post "events/new"
-  post "events/new_event_entry"
+  post "events/create_event_entry"
 
   resources :checklist do
     collection do
@@ -55,6 +62,8 @@ Drugs::Application.routes.draw do
 
   resources :medications
   post "medications/new"
+  post "medications/create_medication_entry"
+  #get "medications/:id/update_medication_entry"
 
   resources :alerts
 

@@ -69,9 +69,9 @@ class EventsController < ApplicationController
         
         if @entry.save
           if has_alert
-            
-            @event.create_alert(params[:alert])
-            
+            @alert = @event.create_alert(params[:alert])
+            @event.alert_id = @alert.id
+            @event.save
           end
         end
         

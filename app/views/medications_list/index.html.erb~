@@ -1,0 +1,6 @@
+<% @medications.each do |medication| %>
+  <div>
+    <h3><%= medication.name %></h3>
+    <%= button_to 'edit', edit_medication_path(medication.id), {} %>
+  </div>
+<% end %>

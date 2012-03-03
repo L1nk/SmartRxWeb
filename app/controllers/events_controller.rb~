@@ -70,7 +70,7 @@ class EventsController < ApplicationController
         if @entry.save
           if has_alert
             
-            @event.create_alert(:med_event_id => @event.id)
+            @event.create_alert(params[:alert])
             
           end
         end
