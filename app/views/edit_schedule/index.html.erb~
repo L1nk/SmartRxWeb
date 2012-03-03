@@ -2,5 +2,5 @@
 
 <%= button_to 'Add a Medication', new_medication_path %>
 <%= button_to 'Add Event', new_event_path %>
-<%= button_to 'Medications List', index_medication_list_path %>
+<%= button_to 'Medications List', 'medications_list' %>
 <%= button_to 'Edit Schedule', '' %>
