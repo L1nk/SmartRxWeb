@@ -7,6 +7,7 @@ class CreateEntries < ActiveRecord::Migration
       t.time :end_time
       t.integer :event_id
       t.integer :medication_id
+      t.integer :schedule_id
 
       t.timestamps
     end
