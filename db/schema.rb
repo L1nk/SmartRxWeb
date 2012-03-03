@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120301100118) do
     t.time     "end_time"
     t.integer  "event_id"
     t.integer  "medication_id"
+    t.integer  "schedule_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -91,13 +92,6 @@ ActiveRecord::Schema.define(:version => 20120301100118) do
   create_table "schedule_to_alerts", :force => true do |t|
     t.integer  "schedule_id"
     t.integer  "alert_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "schedule_to_entries", :force => true do |t|
-    t.integer  "schedule_id"
-    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

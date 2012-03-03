@@ -1,3 +1,13 @@
 <h1>View Schedule</h1>
 
-<% 
+<div>
+  <h2><%= @schedule.schedule_name %></h2>
+</div>
+
+<% @event_entries.each do |entry| %>
+  <h3><%= entry.event.name %></h3>
+<% end%>
+
+<% @medication_entries.each do |entry| %>
+  <h3><%= entry.event.name %></h3>
+<% end%>

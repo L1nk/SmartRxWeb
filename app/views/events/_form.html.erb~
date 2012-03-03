@@ -5,7 +5,7 @@
   </div>
   <div class="field">
     <%= label_tag :description, "Description: " %><br />
-    <%= text_area_tag :event, :description %>
+    <%= text_area :event, :description %>
   </div>
   <div class="field">
     <%= label_tag :start_date, "Start date: " %><br />

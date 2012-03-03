@@ -64,7 +64,7 @@ class EventsController < ApplicationController
         format.json { render json: @event, status: :created, location: @event }
         
         @entry.event_id = @event.id
-
+        @entry.schedule_id = session[:schedule_id]
         has_alert = params[:has_alert]
         
         if @entry.save

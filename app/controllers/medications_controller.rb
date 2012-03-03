@@ -70,6 +70,7 @@ class MedicationsController < ApplicationController
         format.json { render json: @medication, status: :created, location: @medication }
 
         @entry.medication_id = @medication.id
+        @entry.schedule_id = session[:schedule_id]
         has_alert = params[:has_alert]
         
         if @entry.save

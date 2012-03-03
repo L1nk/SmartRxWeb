@@ -103,7 +103,7 @@ class MedicationsController < ApplicationController
   #  end
   #end
 
-  def update_medication_entry
+  def update
     @medication = Medication.find(params[:id])
     entries = Entry.all(:conditions => ["medication_id = ?", @medication.id])
     @entry = entries[0]
