@@ -58,10 +58,9 @@ class MedicationsController < ApplicationController
   end
 
   def create_medication_entry
-    @medication = Medication.new(params[:medication])
-    
-    @medication.user = current_user
 
+    @medication = Medication.new(params[:medication])    
+    @medication.user = current_user
     @entry = @medication.build_entry(params[:entry])
     
     respond_to do |format|

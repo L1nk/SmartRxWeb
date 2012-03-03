@@ -56,6 +56,7 @@ class EventsController < ApplicationController
   def create_event_entry
     
     @event = Event.new(params[:event])
+    @event.user = current_user
     @entry = @event.build_entry(params[:entry])
     
     respond_to do |format|
@@ -84,13 +85,33 @@ class EventsController < ApplicationController
 
   # PUT /events/1
   # PUT /events/1.json
+  #def update
+  #  @event = Event.find(params[:id])
+  #
+  #  respond_to do |format|
+  #    if @event.update_attributes(params[:event])
+  #      format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+  #      format.json { head :no_content }
+  #    else
+  #      format.html { render action: "edit" }
+  #      format.json { render json: @event.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
+
   def update
     @event = Event.find(params[:id])
-
+    entries = Entry.all(:conditions => ["event_id = ?", @event.id])
+    @entry = entries[0]
+    
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
+
+        if @entry.update_attributes(params[:entry])
+        end
+
       else
         format.html { render action: "edit" }
         format.json { render json: @event.errors, status: :unprocessable_entity }

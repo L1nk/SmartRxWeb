@@ -27,6 +27,10 @@
     <%= label_tag :alert_id, "Alert?: " %><br />
     <%= check_box_tag :has_alert %>
   </div>
+  <div class="field">
+    <%= label_tag :user_id, "User id: " %><br />
+    <%= number_field :event, :user_id %>
+  </div>
   <div class="actions">
     <%= submit_tag "submit" %>
   </div>

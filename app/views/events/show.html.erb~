@@ -2,7 +2,7 @@
 
 <p>
   <b>Entry id:</b>
-  <%= @event.name %>
+  <%= @event.entry_id %>
 </p>
 
 <p>

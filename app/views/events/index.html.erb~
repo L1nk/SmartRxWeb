@@ -7,6 +7,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Alert</th>
+    <th>User id</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= event.entry_id %></td>
+    <td><%= event.alert_id %></td>
     <td><%= event.name %></td>
     <td><%= event.description %></td>
     <td><%= event.alert_id %></td>

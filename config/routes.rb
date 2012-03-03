@@ -1,12 +1,12 @@
 Drugs::Application.routes.draw do
-
+  
   resources :events_list do
     collection do
       get 'index'
       post 'index'
     end
   end
-
+  
   resources :medications_list do
     collection do
       get 'index'
@@ -27,7 +27,7 @@ Drugs::Application.routes.draw do
     end
   end
 
-  resources :edit_schedule do
+  resources :manage_entries do
     collection do
       get 'index'
       post 'index'

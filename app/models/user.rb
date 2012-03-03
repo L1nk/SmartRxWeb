@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :caregiver_permission_levels
   has_many :caregiver_to_schedules
   has_many :medications
+  has_many :events
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

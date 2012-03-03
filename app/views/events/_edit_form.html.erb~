@@ -1,4 +1,4 @@
-<%= form_tag('create_event_entry') do %>
+<%= form_tag({:action => :update}, {:method => :put}) do %>
   <div class="field">
     <%= label_tag :name, "Name: " %><br />
     <%= text_field :event, :name %>
@@ -32,6 +32,6 @@
     <%= number_field :event, :user_id %>
   </div>
   <div class="actions">
-    <%= submit_tag "submit" %>
+    <%= submit_tag "Update Medication" %>
   </div>
 <% end %>
