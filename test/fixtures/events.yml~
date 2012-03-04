@@ -9,5 +9,5 @@ one:
 two:
   name: EventName2
   description: MyText
-  alert_id: nil
+  alert_id: 1
   user_id: 1

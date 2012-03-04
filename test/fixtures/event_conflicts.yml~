@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user_id: 1
-  schedule_name: MySchedule
+  entry1_id: 1
+  entry2_id: 1
 
 two:
-  user_id: 2
-  schedule_name: MySchedule
+  entry1_id: 1
+  entry2_id: 1

@@ -7,10 +7,18 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(params[:user])
     
-    @user.schedule = Schedule.new(:schedule_name => 'My Schedule')
+    schedule = @user.build_schedule(params[:schedule])
     
     respond_to do |format|
       if @user.save
+
+        schedule.schedule_name = "My Schedule"
+
+        if schedule.save
+          @user.schedule_id = schedule.id
+          @user.save
+        end
+
         format.html { redirect_to '', notice: 'Account was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else

@@ -8,8 +8,6 @@
 
 Entry.delete_all
 
-ScheduleToEntry.delete_all
-
 Medication.delete_all
 
 Event.delete_all

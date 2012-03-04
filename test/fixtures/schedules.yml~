@@ -2,8 +2,8 @@
 
 one:
   user_id: 1
-  schedule_name: MySchedule
+  schedule_name: MyString
 
 two:
   user_id: 2
-  schedule_name: MySchedule
+  schedule_name: MyString

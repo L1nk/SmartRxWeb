@@ -15,7 +15,6 @@ one:
 two:
   user_id: 1
   alert_id: nil
-  entry_id: 
   name: MedName2
   importance: medium
   quantity_per_dose: 3

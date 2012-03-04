@@ -3,11 +3,9 @@
 one:
   medication_id: 1
   user_id: 1
-  alert_delta_time: 2012-02-16 15:17:02
   alert_type: MyString
 
 two:
   medication_id: 1
   user_id: 1
-  alert_delta_time: 2012-02-16 15:17:02
   alert_type: MyString
