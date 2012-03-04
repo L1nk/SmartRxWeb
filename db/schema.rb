@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20120301100118) do
     t.integer  "event_id"
     t.integer  "medication_id"
     t.string   "alert_type"
+    t.integer  "user_id"
+    t.boolean  "is_dismissed"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
