@@ -1,8 +1,13 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
 <h1>Medication List</h1>
 
 <% @medications.each do |medication| %>
   <div>
     <h3><%= medication.name %></h3>
     <%= button_to 'edit', edit_medication_path(medication.id), {:method => :get} %>
+    <%= button_to 'delete', medication, confirm: 'Are you sure?' %>
   </div>
 <% end %>

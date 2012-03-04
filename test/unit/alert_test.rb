@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TimeConflictToTimeBlockTest < ActiveSupport::TestCase
+class AlertTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

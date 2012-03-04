@@ -8,5 +8,6 @@
   <div>
     <h3><%= event.name %></h3>
     <%= button_to 'edit', edit_event_path(event.id), {:method => :get} %>
+    <%= button_to 'delete', event, confirm: 'Are you sure?', method: :delete %>
   </div>
 <% end %>

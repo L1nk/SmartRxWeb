@@ -156,7 +156,7 @@ class MedicationsController < ApplicationController
     @medication.destroy
 
     respond_to do |format|
-      format.html { redirect_to medications_url }
+      format.html { redirect_to manage_entries_path }
       format.json { head :no_content }
     end
   end
