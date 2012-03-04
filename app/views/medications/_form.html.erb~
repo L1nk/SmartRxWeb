@@ -1,15 +1,11 @@
 <%= form_tag('create_medication_entry') do %>
   <div class="field">
-    <%= label_tag :entry_id %><br />
-    <%= number_field :medication, :entry_id %>
-  </div>
-  <div class="field">
     <%= label_tag :name %><br />
     <%= text_field :medication, :name %>
   </div>
   <div class="field">
     <%= label_tag :importance %><br />
-    <%= text_field :medication, :importance %>
+    <%= select :medication, :importance, [['low'], ['medium'], ['high']] %>
   </div>
   <div class="field">
     <%= label_tag :quantity_per_dose %><br />
@@ -49,7 +45,7 @@
   </div>
   <div class="field">
     <%= label_tag :has_alert %><br />
-    <%= check_box_tag :has_alert %>
+    <%= check_box_tag :has_alert, {checked: true} %>
   </div>
   <div class="actions">
     <%= submit_tag "Add Medication" %>

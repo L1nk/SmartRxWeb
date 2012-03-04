@@ -1,5 +1,8 @@
 <h1>Events List</h1>
 
 <% @events.each do |event| %>
-  <h3><%= event.name %></h3>
+  <div>
+    <h3><%= event.name %></h3>
+    <%= button_to 'edit', edit_event_path(event.id), {:method => :get} %>
+  </div>
 <% end %>

@@ -73,7 +73,7 @@ Drugs::Application.routes.draw do
 
   resources :alerts
 
-  resources :schedule_to_entries
+  #resources :schedule_to_entries
 
   resources :entries
 

@@ -37,6 +37,14 @@ class MedicationsController < ApplicationController
     @medication = Medication.find(params[:id])
     entries = Entry.all(:conditions => ["medication_id = ?", @medication.id])
     @entry = entries[0]
+    
+    #checks to see if this medication has an alert to check the has_alert checkbox
+    alerts = Alert.all(:conditions => ["medication_id = ?", @medication.id])
+    @alert_first = alerts[0]
+    
+    if @alert_first
+      @has_alert = true
+    end
   end
 
   # POST /medications
@@ -65,7 +73,7 @@ class MedicationsController < ApplicationController
     
     respond_to do |format|
       if @medication.save
-        format.html { redirect_to @medication, notice: 'Medication was successfully created.' }
+        format.html { redirect_to manage_entries_path, notice: 'Medication was successfully created.' }
         format.json { render json: @medication, status: :created, location: @medication }
 
         @entry.medication_id = @medication.id
@@ -108,9 +116,27 @@ class MedicationsController < ApplicationController
     entries = Entry.all(:conditions => ["medication_id = ?", @medication.id])
     @entry = entries[0]
 
+    alert_checked = params[:has_alert]
+    alerts = Alert.all(:conditions => ["medication_id = ?", @medication.id])
+    alert_exists = alerts[0]
+    
+    if alert_checked
+      if !alert_exists
+        alert = @medication.create_alert
+        @medication.alert_id = alert.id
+        @medication.save
+      end
+    else  
+      if alert_exists
+        @medication.alert_id = nil
+        @medication.save
+        Alert.delete(alert_exists.id)
+      end
+    end
+    
     respond_to do |format|
       if @medication.update_attributes(params[:medication])
-        format.html { redirect_to @medication, notice: 'Medication was successfully updated.' }
+        format.html { redirect_to manage_entries_path, notice: 'Medication was successfully updated.' }
         format.json { head :no_content }
 
         if @entry.update_attributes(params[:entry])

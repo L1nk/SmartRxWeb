@@ -1,4 +1,4 @@
-<h1>Medications List</h1>
+<h1>Medication List</h1>
 
 <% @medications.each do |medication| %>
   <div>

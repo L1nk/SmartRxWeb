@@ -35,6 +35,16 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    entries = Entry.all(:conditions => ["event_id = ?", @event.id])
+    @entry = entries[0]
+    
+    #checks to see if this medication has an alert to check the has_alert checkbox
+    alerts = Alert.all(:conditions => ["event_id = ?", @event.id])
+    @alert_first = alerts[0]
+    
+    if @alert_first
+      @has_alert = true
+    end
   end
 
   # POST /events
@@ -61,7 +71,7 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to manage_entries_path, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
         
         @entry.event_id = @event.id
@@ -103,10 +113,28 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     entries = Entry.all(:conditions => ["event_id = ?", @event.id])
     @entry = entries[0]
+
+    alert_checked = params[:has_alert]
+    alerts = Alert.all(:conditions => ["event_id = ?", @event.id])
+    alert_exists = alerts[0]
+    
+    if alert_checked
+      if !alert_exists
+        alert = @event.create_alert
+        @event.alert_id = alert.id
+        @event.save
+      end
+    else  
+      if alert_exists
+        @event.alert_id = nil
+        @event.save
+        Alert.delete(alert_exists.id)
+      end
+    end
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to manage_entries_path, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
 
         if @entry.update_attributes(params[:entry])

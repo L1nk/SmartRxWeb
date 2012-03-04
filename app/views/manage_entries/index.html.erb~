@@ -1,4 +1,4 @@
-<h1>Edit Schedule</h1>
+<h1>Manage Entries</h1>
 
 <%= button_to 'Add Medication', new_medication_path %>
 <%= button_to 'Add Event', new_event_path %>

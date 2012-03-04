@@ -27,7 +27,7 @@ Drugs::Application.routes.draw do
     end
   end
 
-  resources :edit_schedule do
+  resources :manage_entries do
     collection do
       get 'index'
       post 'index'

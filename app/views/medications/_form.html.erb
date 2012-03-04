@@ -5,7 +5,7 @@
   </div>
   <div class="field">
     <%= label_tag :importance %><br />
-    <%= text_field :medication, :importance %>
+    <%= select :medication, :importance, [['low'], ['medium'], ['high']] %>
   </div>
   <div class="field">
     <%= label_tag :quantity_per_dose %><br />
