@@ -3,7 +3,7 @@
 one:
   user_id: 1
   alert_id: 2
-  entry_id: 
+  entry_id: 1
   name: MedName1
   importance: high
   quantity_per_dose: 1
@@ -15,6 +15,7 @@ one:
 two:
   user_id: 1
   alert_id: nil
+  entry_id: 2
   name: MedName2
   importance: medium
   quantity_per_dose: 3

@@ -7,7 +7,7 @@
 one:
   email: test@email.com
   encrypted_password: blahblah
-  reset_password_token: nil
+  reset_password_token: 1234
   reset_password_sent_at: nil
   remember_created_at: nil
   sign_in_count: 1
@@ -26,7 +26,7 @@ one:
 two:
   email: test2@gmail.com
   encrypted_password: blahblah
-  reset_password_token: nil
+  reset_password_token: 4321
   reset_password_sent_at: nil
   remember_created_at: nil
   sign_in_count: 1

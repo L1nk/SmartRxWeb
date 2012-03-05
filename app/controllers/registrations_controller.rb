@@ -12,6 +12,9 @@ class RegistrationsController < Devise::RegistrationsController
     respond_to do |format|
       if @user.save
 
+        #send email to user informing him/her that the sign up was successful
+        UserMailer.welcome_email(@user).deliver
+
         schedule.schedule_name = "My Schedule"
 
         if schedule.save
