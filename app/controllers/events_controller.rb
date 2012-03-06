@@ -84,7 +84,7 @@ class EventsController < ApplicationController
             @alert.name = @event.name
             @alert.alert_time = @entry.start_time
 
-            UserMailer.alert_email(current_user, @alert)
+            UserMailer.enqueue_alert_email(current_user, @alert)
 
             @event.alert_id = @alert.id
             @event.save

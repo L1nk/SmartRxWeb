@@ -86,7 +86,7 @@ class MedicationsController < ApplicationController
             @alert.name = @medication.name
             @alert.alert_time = @entry.start_time
 
-            UserMailer.delay.alert_email(current_user, @alert)
+            UserMailer.alert_email(current_user, @alert)
 
             @medication.alert_id = @alert.id
             @medication.save
