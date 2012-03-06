@@ -2,7 +2,6 @@ class CreateMedications < ActiveRecord::Migration
   def change
     create_table :medications do |t|
       t.integer :user_id
-      t.integer :alert_id
       t.integer :entry_id
       t.string :name
       t.string :importance
@@ -10,7 +9,7 @@ class CreateMedications < ActiveRecord::Migration
       t.float :number_of_doses
       t.boolean :is_critical
       t.string :directions
-      t.text :comment
+      t.text :comments
 
       t.timestamps
     end

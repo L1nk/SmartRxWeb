@@ -81,6 +81,11 @@ class EventsController < ApplicationController
         if @entry.save
           if has_alert
             @alert = @event.create_alert(params[:alert])
+            @alert.name = @event.name
+            @alert.alert_time = @entry.start_time
+
+            UserMailer.alert_email(current_user, @alert)
+
             @event.alert_id = @alert.id
             @event.save
           end

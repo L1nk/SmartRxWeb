@@ -66,24 +66,16 @@ Drugs::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   #Action_mailer configurations
-  begin
-    config.action_mailer.perform_deliveries = true
-    config.action_mailer.raise_delivery_errors = true
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :enable_starttls_auto => true,
-      :address => "smtp.gmail.com",
-      :port => 587,
-      :domain => "localhost:3000",
-      :authentication => :plain,
-      :user_name => "drugscheduler477",
-      :password => "Wilczynski"
-    }
-  rescue
-    config.action_mailer.delivery_method = :sendmail
-    config.action_mailer.sendmail_settings = {
-      :location => "/usr/sbin/sendmail",
-      :arguments => "-t"
-    }
-  end
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "localhost:3000",
+    :authentication => :plain,
+    :user_name => "drugscheduler477",
+    :password => "Wilczynski"
+  }
 end

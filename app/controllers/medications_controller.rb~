@@ -83,6 +83,11 @@ class MedicationsController < ApplicationController
         if @entry.save
           if has_alert
             @alert = @medication.create_alert(params[:alert])
+            @alert.name = @medication.name
+            @alert.alert_time = @entry.start_time
+
+            UserMailer.delay.alert_email(current_user, @alert)
+
             @medication.alert_id = @alert.id
             @medication.save
           end
