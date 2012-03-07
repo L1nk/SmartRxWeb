@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <li class="top">
   <%= link_to(current_user.email, edit_user_registration_path, :class => 'header_link') %>
-<!--  <ul class="subnav">
+  <ul class="subnav">
     <li>
     <%= link_to(current_user.email, edit_user_registration_path, :class => 'header_link') %>        
     </li>
@@ -9,7 +9,7 @@
     <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'header_link') %>        
     </li>
   </ul>
-  </li> -->
+  </li>
 <% else %>
   <li>
   <%= link_to('Register', new_user_registration_path, :class => 'header_link')  %>

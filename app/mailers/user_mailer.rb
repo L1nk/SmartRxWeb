@@ -8,10 +8,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def enqueue_alert_email(user, alert)
-    @user = user
-    @alert = alert
-    
-    Delayed::Job.enqueue(UserMailerJob.new(@user, @alert), 1.minutes.from_now)
+    Delayed::Job.enqueue(UserMailerJob.new(user, alert), 0, alert.alert_time )
   end
 
   def alert_email(user, alert)

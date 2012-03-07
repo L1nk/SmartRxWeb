@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20120306060714) do
     t.string   "alert_type"
     t.integer  "user_id"
     t.boolean  "is_dismissed"
-    t.time     "alert_time"
+    t.datetime "alert_time"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(:version => 20120306060714) do
   create_table "entries", :force => true do |t|
     t.date     "start_date"
     t.date     "end_date"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "event_id"
     t.integer  "medication_id"
     t.integer  "schedule_id"

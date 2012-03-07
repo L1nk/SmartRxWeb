@@ -3,6 +3,7 @@ class CreateScheduleAlerts < ActiveRecord::Migration
     create_table :alerts do |t|
       t.integer :event_id
       t.integer :medication_id
+      t.string :name
       t.string :alert_type
       t.integer :user_id
       t.boolean :is_dismissed

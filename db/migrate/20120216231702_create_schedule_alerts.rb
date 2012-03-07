@@ -7,7 +7,7 @@ class CreateScheduleAlerts < ActiveRecord::Migration
       t.string :alert_type
       t.integer :user_id
       t.boolean :is_dismissed
-      t.time :alert_time
+      t.datetime :alert_time
 
       t.timestamps
     end

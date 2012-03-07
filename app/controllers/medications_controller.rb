@@ -85,6 +85,7 @@ class MedicationsController < ApplicationController
             @alert = @medication.create_alert(params[:alert])
             @alert.name = @medication.name
             @alert.alert_time = @entry.start_time
+            @alert.save
 
             UserMailer.enqueue_alert_email(current_user, @alert)
 
