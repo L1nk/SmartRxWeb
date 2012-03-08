@@ -122,6 +122,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.0)
       rack (>= 1.0)
+    watu_table_builder (0.3.0)
 
 PLATFORMS
   ruby
@@ -138,3 +139,4 @@ DEPENDENCIES
   therubyracer
   thin
   uglifier (>= 1.0.3)
+  watu_table_builder

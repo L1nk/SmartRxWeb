@@ -14,15 +14,9 @@
   <%= render 'devise/menu/login_items' %>
 </ul>
 
-<div class="leftnav">
-<ul class="leftnav">
-  <li><%= link_to 'View Schedule', '/view_schedule' %></li>
-  <li><%= link_to 'Manage Entries', '/manage_entries' %></li>
-  <li><%= link_to 'Checklist' , '/checklist' %></li>
-</ul>
-</div>
-
+<div class="content">
 <%= yield %>
+</div>
 
 </body>
 </html>

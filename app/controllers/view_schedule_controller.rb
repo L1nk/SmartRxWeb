@@ -5,16 +5,13 @@ class ViewScheduleController < ApplicationController
     
     @event_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :event, :include => :event)
     @medication_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :medication, :include => :medication)
-
+    
+    @date = params[:month] ? Date.strptime(params[:month], '%Y-%m') : Date.today
+    
     respond_to do |format|
       format.html # view_schedule.html.erb
       format.json { render json: @schedule }
     end
   end
-
-  def basic_view
-    respond_to do |format|
-      format.html # basic_view.html.erb
-    end
-  end
+  
 end

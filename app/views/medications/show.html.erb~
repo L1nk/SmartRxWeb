@@ -1,22 +1,11 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @medication.user_id %>
-</p>
-
-<p>
-  <b>Alert:</b>
-  <%= @medication.alert_id %>
-</p>
-
-<p>
-  <b>Time block:</b>
-  <%= @medication.entry_id %>
-</p>
-
-<p>
-  <b>Name:</b>
+  <b>Medication Name:</b>
   <%= @medication.name %>
 </p>
 
@@ -50,6 +39,13 @@
   <%= @medication.comments %>
 </p>
 
+<p>
+  <b>Has Alert?</b>
+  <%= @medication.alert_id %>
+</p>
+
 
 <%= link_to 'Edit', edit_medication_path(@medication) %> |
 <%= link_to 'Back', medications_path %>
+
+</div>

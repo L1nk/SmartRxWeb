@@ -8,14 +8,16 @@
 
 <h1 class="section_title">Medication List</h1>
 
+<ul class="med_list">
 <% @medications.each do |medication| %>
-  <div>
-    <ul class="object_list">
+  <li>
+    <ul class="med_item">
       <li><h3><%= medication.name %></h3></li>
       <li><%= link_to 'edit', edit_medication_path(medication.id), {:method => :get} %></li>
       <li><%= link_to 'delete', medication, confirm: 'Are you sure?', method: :delete %></li>
     </ul>
-  </div>
+  </li>
 <% end %>
+</ul>
 
 </div>

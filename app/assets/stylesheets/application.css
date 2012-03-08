@@ -12,6 +12,15 @@
  *= require_tree .
 */
 
+div.content {
+  position: relative;
+  width: 100%;
+}
+
+div.clear {
+  clear: both;
+}
+
 ul.topnav {
   list-style: none;
   text-align: right;	
@@ -49,15 +58,19 @@ div.sidenav{
 
 ul.sidenav {
   padding: 0.5em;
+  margin-left: 1em;
   height: 100%;
   background-color: white;
+  text-align: left;
 }
 
 ul.sidenav a {
   text-decoration: none;
+  color: grey;
 }
 
 ul.sidenav a:visited {
+  color: grey;
 }
 
 ul.sidenav a:hover {
@@ -66,9 +79,9 @@ ul.sidenav a:hover {
 }
 
 div.page_content {
-  float: left;
   padding: 0.5em;
-  margin-left: 2em;
+  margin-left: 200px;
+  width: 70%;
 }
 
 h1.section_title {

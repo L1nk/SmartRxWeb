@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul.object_list li {
+ul.med_item li {
+  float: left;
+  padding: 5px;
+}
+
+ul.events_list {
   float: left;
 }

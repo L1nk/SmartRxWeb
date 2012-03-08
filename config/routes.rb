@@ -1,4 +1,6 @@
 Drugs::Application.routes.draw do
+
+  get "view_schedule/basic_view"
   
   resources :events_list do
     collection do

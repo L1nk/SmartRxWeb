@@ -1,4 +1,16 @@
 class HomeController < ApplicationController
   def index
+    schedule = Schedule.all(:conditions => ["user_id = ?", current_user.id])
+    @schedule = schedule[0]
+    
+    @event_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :event, :include => :event)
+    @medication_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :medication, :include => :medication)
+    
+    @date = params[:month] ? Date.strptime(params[:month], '%Y-%m') : Date.today
+    
+    respond_to do |format|
+      format.html # home.html.erb
+      format.json { render json: @event_entries }
+    end
   end
 end

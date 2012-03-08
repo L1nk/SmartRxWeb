@@ -1,17 +1,28 @@
+<div class="content">
+
 <%= render 'sidenav' %>
 
 <div class="page_content">
 
-<div>
-  <h2><%= @schedule.schedule_name %></h2>
+<div id="calendar">
+  <h2 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+  </h2>
+  <%= calendar_for @event_entries, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+    <% calendar.day(:day_method => :start_time) do |date, event_entries| %>
+      <%= date.day %>
+      <ul>
+        <% for event_entry in event_entries %>
+          <li><%= link_to h(event_entry.event.name), event_entry %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 </div>
 
-<% @event_entries.each do |entry| %>
-  <h3><%= entry.event.name %></h3>
-<% end%>
-
-<% @medication_entries.each do |entry| %>
-  <h3><%= entry.medication.name %></h3>
-<% end%>
+</div>
 
 </div>

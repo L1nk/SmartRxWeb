@@ -1,12 +1,11 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Entry id:</b>
-  <%= @event.entry_id %>
-</p>
-
-<p>
-  <b>Name:</b>
+  <b>Event Name:</b>
   <%= @event.name %>
 </p>
 
@@ -16,15 +15,12 @@
 </p>
 
 <p>
-  <b>Alert:</b>
-  <%= @event.alert_id %>
-</p>
-
-<p>
-  <b>User id:</b>
-  <%= @event.user_id %>
+  <b>Has Alert?</b>
+  <%= @event.alert_id ? 'yes' : 'no' %>
 </p>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+</div>

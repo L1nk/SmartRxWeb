@@ -43,3 +43,4 @@ gem 'jquery-rails'
 
 gem 'thin'
 gem 'devise'
+gem 'delayed_job_active_record'
