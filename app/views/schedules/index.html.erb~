@@ -12,7 +12,7 @@
 <% @schedules.each do |schedule| %>
   <tr>
     <td><%= schedule.user_id %></td>
-    <td><%= schedule.name %></td>
+    <td><%= schedule.schedule_name %></td>
     <td><%= link_to 'Show', schedule %></td>
     <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
     <td><%= link_to 'Destroy', schedule, confirm: 'Are you sure?', method: :delete %></td>

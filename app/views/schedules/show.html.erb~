@@ -7,7 +7,7 @@
 
 <p>
   <b>Schedule name:</b>
-  <%= @schedule.name %>
+  <%= @schedule.schedule_name %>
 </p>
 
 

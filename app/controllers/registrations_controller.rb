@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
         #send email to user informing him/her that the sign up was successful
         UserMailer.delay.welcome_email(@user)
 
-        schedule.schedule_name = "My Schedule"
+        schedule.name = "My Schedule"
 
         if schedule.save
           @user.schedule_id = schedule.id

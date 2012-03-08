@@ -119,9 +119,9 @@ ActiveRecord::Schema.define(:version => 20120306060714) do
 
   create_table "schedules", :force => true do |t|
     t.integer  "user_id"
-    t.string   "schedule_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
