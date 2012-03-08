@@ -1,13 +1,21 @@
+<%= render 'sidenav' %>
+
+<div class = "page_content">
+
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Events List</h1>
+<h1 class="section_title">Events List</h1>
 
 <% @events.each do |event| %>
   <div>
-    <h3><%= event.name %></h3>
-    <%= button_to 'edit', edit_event_path(event.id), {:method => :get} %>
-    <%= button_to 'delete', event, confirm: 'Are you sure?', method: :delete %>
+    <ul class="object_list">
+      <li><h3><%= event.name %></h3></li>
+      <li><%= link_to 'edit', edit_event_path(event.id), {:method => :get} %></li>
+      <li><%= link_to 'delete', event, confirm: 'Are you sure?', method: :delete %></li>
+    </ul>
   </div>
 <% end %>
+
+</div>

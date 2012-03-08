@@ -1,6 +1,12 @@
-<h1>Editing medication</h1>
+<%= render 'sidenav'%>
 
-<%= render 'form' %>
+<div class="page_content">
+
+<h1 class="section_title">Edit Medication</h1>
+
+<%= render 'edit_form' %>
 
 <%= link_to 'Show', @medication %> |
 <%= link_to 'Back', medications_path %>
+
+</div>

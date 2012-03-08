@@ -1,6 +1,11 @@
-<h1>Editing event</h1>
+<%= render 'sidenav' %>
 
-<%= render 'form' %>
+<div class="page_content">
+
+<h1 class="section_title">Editing event</h1>
+
+<%= render 'edit_form' %>
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>
+</div>

@@ -11,4 +11,10 @@ class ViewScheduleController < ApplicationController
       format.json { render json: @schedule }
     end
   end
+
+  def basic_view
+    respond_to do |format|
+      format.html # basic_view.html.erb
+    end
+  end
 end

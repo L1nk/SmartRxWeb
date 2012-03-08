@@ -1,10 +1,7 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-
-<h1>Manage Entries</h1>
-
-<%= button_to 'Add Medication', new_medication_path %>
-<%= button_to 'Add Event', new_event_path %>
-<%= button_to 'Medications List', 'medications_list' %>
-<%= button_to 'Events List', 'events_list' %>
+</div>

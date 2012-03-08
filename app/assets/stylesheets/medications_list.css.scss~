@@ -4,5 +4,4 @@
 
 ul.object_list li {
   float: left;
-  padding: 5px;
 }

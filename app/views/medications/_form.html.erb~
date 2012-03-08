@@ -28,14 +28,6 @@
     <%= text_area :medication, :comments %>
   </div>
   <div class="field">
-    <%= label_tag :start_date, "Start date: " %><br />
-    <%= date_select :entry, :start_date %>
-  </div>
-  <div class="field">
-    <%= label_tag :end_date, "End date: " %><br />
-    <%= date_select :entry, :end_date %>
-  </div>
-  <div class="field">
     <%= label_tag :start_time, "Start time: " %><br />
     <%= time_select :entry, :start_time %>
   </div>
@@ -45,7 +37,7 @@
   </div>
   <div class="field">
     <%= label_tag :has_alert %><br />
-    <%= check_box_tag :has_alert, {checked: true} %>
+    <%= check_box_tag :has_alert %>
   </div>
   <div class="actions">
     <%= submit_tag "Add Medication" %>

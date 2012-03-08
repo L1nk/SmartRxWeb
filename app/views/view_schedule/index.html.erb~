@@ -1,4 +1,6 @@
-<h1>View Schedule</h1>
+<%= render 'sidenav' %>
+
+<div class="page_content">
 
 <div>
   <h2><%= @schedule.schedule_name %></h2>
@@ -9,5 +11,7 @@
 <% end%>
 
 <% @medication_entries.each do |entry| %>
-  <h3><%= entry.event.name %></h3>
+  <h3><%= entry.medication.name %></h3>
 <% end%>
+
+</div>

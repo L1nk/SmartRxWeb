@@ -8,11 +8,19 @@
 </head>
 <body>
 
-<ul class="topnav" id="hmenu">
+<ul class="topnav" id="topnav">
   <%= render 'devise/menu/home_items' %>
   <%= render 'devise/menu/registration_items' %>
   <%= render 'devise/menu/login_items' %>
 </ul>
+
+<div class="leftnav">
+<ul class="leftnav">
+  <li><%= link_to 'View Schedule', '/view_schedule' %></li>
+  <li><%= link_to 'Manage Entries', '/manage_entries' %></li>
+  <li><%= link_to 'Checklist' , '/checklist' %></li>
+</ul>
+</div>
 
 <%= yield %>
 

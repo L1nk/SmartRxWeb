@@ -1,13 +1,21 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
+
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Medication List</h1>
+<h1 class="section_title">Medication List</h1>
 
 <% @medications.each do |medication| %>
   <div>
-    <h3><%= medication.name %></h3>
-    <%= button_to 'edit', edit_medication_path(medication.id), {:method => :get} %>
-    <%= button_to 'delete', medication, confirm: 'Are you sure?', method: :delete %>
+    <ul class="object_list">
+      <li><h3><%= medication.name %></h3></li>
+      <li><%= link_to 'edit', edit_medication_path(medication.id), {:method => :get} %></li>
+      <li><%= link_to 'delete', medication, confirm: 'Are you sure?', method: :delete %></li>
+    </ul>
   </div>
 <% end %>
+
+</div>
