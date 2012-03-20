@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20120306060714) do
 
   create_table "medication_conflicts", :force => true do |t|
     t.integer  "medication1_id"
-    t.boolean  "medication2_id"
+    t.integer  "medication2_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
