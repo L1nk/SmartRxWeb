@@ -2,28 +2,34 @@
 
 <div class="page_content">
 
-<div id="calendar">
-  <h2 id="month">
-    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
-    <%= @date.strftime("%B %Y") %>
-    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
-  </h2>
-  <%= calendar_for @all_entries, :year => @date.year, :month => @date.month do |calendar| %>
-    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-    <% calendar.day(:day_method => :start_time) do |date, all_entries| %>
-      <%= date.day %>
-      <ul>
-        <% for entry in all_entries %>
-          <% if entry.event %>
-            <li><%= link_to h(entry.event.name), entry.event %></li>
-          <% end %>
-          <% if entry.medication %>
-            <li><%= link_to h(entry.medication.name), entry.medication %></li>
-          <% end %>
-        <% end %>
-      </ul>
-    <% end %>
+<% if current_user.is_caregiver %>
+  <% for patient in @patients %>
+    <p><%= patient.email %></p>
   <% end %>
-</div>
+<% else %>
+  <div id="calendar">
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+      <%= @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+    </h2>
+    <%= calendar_for @all_entries, :year => @date.year, :month => @date.month do |calendar| %>
+      <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+      <% calendar.day(:day_method => :start_time) do |date, all_entries| %>
+        <%= date.day %>
+        <ul>
+          <% for entry in all_entries %>
+            <% if entry.event %>
+              <li><%= link_to h(entry.event.name), entry.event %></li>
+            <% end %>
+            <% if entry.medication %>
+              <li><%= link_to h(entry.medication.name), entry.medication %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
 
 </div>

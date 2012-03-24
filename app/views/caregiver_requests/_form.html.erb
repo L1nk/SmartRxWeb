@@ -1,0 +1,21 @@
+<%= form_for(@caregiver_request) do |f| %>
+  <% if @caregiver_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@caregiver_request.errors.count, "error") %> prohibited this caregiver_request from being saved:</h2>
+
+      <ul>
+      <% @caregiver_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :patient_email %><br />
+    <%= f.email_field :patient_email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

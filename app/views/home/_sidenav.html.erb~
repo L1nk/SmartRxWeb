@@ -2,6 +2,7 @@
 <ul class="sidenav">
   <li><%= link_to 'Home', '/home' %></li>
   <li><%= link_to 'Manage Calendar', '/manage_entries' %></li>
-  <li><%= link_to 'Checklist' , '/checklist' %></li>
+  <li><%= link_to 'Checklist' , '/' %></li>
+  <li><%= link_to 'Caregiver Requests', '/manage_caregivers' %></li>
 </ul>
 </div>

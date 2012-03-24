@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Integer:</b>
+  <%= @caregiver_request.caregiver_id %>
+</p>
+
+<p>
+  <b>Integer:</b>
+  <%= @caregiver_request.patient_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_caregiver_request_path(@caregiver_request) %> |
+<%= link_to 'Back', caregiver_requests_path %>

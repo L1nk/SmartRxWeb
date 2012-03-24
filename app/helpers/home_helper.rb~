@@ -1,24 +1,4 @@
-class HomeController < ApplicationController
-  
-  def index
-    
-    if current_user.is_caregiver
-      get_patients()
-    else
-      get_schedule_info(current_user)
-    end
-    
-    respond_to do |format|
-      format.html # home.html.erb
-      format.json { render json: @event_entries }
-    end
-  end
-
-  #helper functions
-  def get_patients()
-    @patients = User.all(:conditions => ["caregiver_id = ?", current_user.id])
-  end
-  
+module HomeHelper
   def get_schedule_info(user)
     schedule = Schedule.all(:conditions => ["user_id = ?", user.id])
     @schedule = schedule[0]
@@ -41,5 +21,4 @@ class HomeController < ApplicationController
       count += 1
     end
   end
-
 end

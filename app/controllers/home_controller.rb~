@@ -1,6 +1,26 @@
 class HomeController < ApplicationController
+  
   def index
-    schedule = Schedule.all(:conditions => ["user_id = ?", current_user.id])
+    
+    if current_user.is_caregiver
+      get_patients()
+    else
+      get_schedule_info(current_user)
+    end
+    
+    respond_to do |format|
+      format.html # home.html.erb
+      format.json { render json: @event_entries }
+    end
+  end
+
+  #helper functions
+  def get_patients()
+    patients = User.all(:conditions => ["caregiver_id = ?", current_user.id])
+  end
+  
+  def get_schedule_info(user)
+    schedule = Schedule.all(:conditions => ["user_id = ?", user.id])
     @schedule = schedule[0]
     
     event_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :event, :include => :event)
@@ -11,19 +31,15 @@ class HomeController < ApplicationController
     count = 0
     @all_entries = []
 
-    for event in @event_entries
+    for event in event_entries
       @all_entries[count] = event
       count += 1
     end
 
-    for medication in @medication_entries
+    for medication in medication_entries
       @all_entries[count] = medication
       count += 1
     end
-    
-    respond_to do |format|
-      format.html # home.html.erb
-      format.json { render json: @event_entries }
-    end
   end
+
 end

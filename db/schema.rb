@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306060714) do
+ActiveRecord::Schema.define(:version => 20120323175634) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "event_id"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(:version => 20120306060714) do
     t.boolean  "can_edit_medication_conflicts"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "caregiver_requests", :force => true do |t|
+    t.integer  "caregiver_id"
+    t.string   "patient_email"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "caregiver_to_schedules", :force => true do |t|

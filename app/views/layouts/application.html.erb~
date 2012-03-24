@@ -9,6 +9,7 @@
 <body>
 
 <ul class="topnav" id="topnav">
+  <%= render 'notification_items' %>
   <%= render 'devise/menu/home_items' %>
   <%= render 'devise/menu/registration_items' %>
   <%= render 'devise/menu/login_items' %>
@@ -16,6 +17,7 @@
 
 <div class="content">
 <%= yield %>
+<div class="clear"></div>
 </div>
 
 </body>

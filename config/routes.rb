@@ -1,5 +1,21 @@
 Drugs::Application.routes.draw do
 
+  #get "manage_caregiver/index"
+  resources :manage_caregiver do
+    collection do
+      get 'index'
+      post 'index'
+    end
+  end
+
+  match "caregiver_requests/:id/accept" => "caregiver_requests#accept"
+  resources :caregiver_requests do
+    collection do
+      get 'manage'
+      post 'manage'
+    end
+  end
+
   get "view_schedule/basic_view"
   
   resources :events_list do
@@ -58,7 +74,8 @@ Drugs::Application.routes.draw do
 
   resources :caregiver_permission_levels
 
-  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users, :controllers => { :registrations => 'registrations',
+				       :sessions => 'sessions'}
 
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
