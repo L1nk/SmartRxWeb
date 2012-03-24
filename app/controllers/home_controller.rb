@@ -9,8 +9,19 @@ class HomeController < ApplicationController
     end
     
     respond_to do |format|
-      format.html # home.html.erb
-      format.json { render json: @event_entries }
+      format.html # index.html.erb
+      format.json { render json: @all_entries }
+    end
+  end
+
+  def patient_schedule
+    user = User.find(params[:id])
+    
+    get_schedule_info(user)
+
+    respond_to do |format|
+      format.html # patient_schedule.html.erb
+      format.json { render json: @all_entries }
     end
   end
 

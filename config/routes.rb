@@ -61,6 +61,7 @@ Drugs::Application.routes.draw do
 
   #get "view_schedule/index"
 
+  match ":id/patient_schedule" => "home#patient_schedule"
   resources :home do
     collection do
       get 'index'

@@ -1,14 +1,6 @@
 <%= render 'sidenav' %>
 
 <div class="page_content">
-
-<% if current_user.is_caregiver %>
-  
-  <% for patient in @patients %>
-    <%= link_to patient.email, "/#{patient.id}/patient_schedule" %>
-  <% end %>
-  
-<% else %>
   <div id="calendar">
     <h2 id="month">
       <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
@@ -32,6 +24,4 @@
       <% end %>
     <% end %>
   </div>
-<% end %>
-
 </div>

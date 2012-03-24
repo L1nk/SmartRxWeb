@@ -8,7 +8,7 @@ Drugs::Application.routes.draw do
     end
   end
 
-  match "" => "caregive_requests#accept"
+  match "caregiver_requests/:id/accept" => "caregiver_requests#accept"
   resources :caregiver_requests do
     collection do
       get 'manage'
@@ -61,6 +61,7 @@ Drugs::Application.routes.draw do
 
   #get "view_schedule/index"
 
+  match "home/:id/patient_schedule" => "home#patient_schedule"
   resources :home do
     collection do
       get 'index'
