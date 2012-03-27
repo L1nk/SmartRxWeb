@@ -1,0 +1,11 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
+
+  <ul>
+    <% for patient in @patients %>
+    <li><%= link_to patient.email, "/#{patient.id}/patient_schedule" %></li>
+    <% end %>
+  </ul>
+
+</div>

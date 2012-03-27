@@ -68,7 +68,16 @@ class MedicationsController < ApplicationController
   def create_medication_entry
 
     @medication = Medication.new(params[:medication])    
-    @medication.user = current_user
+    @schedule_id = -1
+
+    if session[:managing_patient]
+      @medication.user = User.find(session[:patient_id])
+      schedule_id = session[:patient_schedule_id]
+    else
+      @medication.user = current_user
+      schedule_id = session[:schedule_id]
+    end
+    
     @entry = @medication.build_entry(params[:entry])
     
     respond_to do |format|
@@ -77,7 +86,7 @@ class MedicationsController < ApplicationController
         format.json { render json: @medication, status: :created, location: @medication }
 
         @entry.medication_id = @medication.id
-        @entry.schedule_id = session[:schedule_id]
+        @entry.schedule_id = schedule_id
         has_alert = params[:has_alert]
         
         if @entry.save

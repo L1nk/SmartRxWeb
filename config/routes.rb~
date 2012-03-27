@@ -1,6 +1,7 @@
 Drugs::Application.routes.draw do
 
   #get "manage_caregiver/index"
+  match "manage_caregiver/patients" => "manage_caregiver#patients"
   resources :manage_caregiver do
     collection do
       get 'index'
@@ -61,7 +62,6 @@ Drugs::Application.routes.draw do
 
   #get "view_schedule/index"
 
-  match "home/:id/patient_schedule" => "home#patient_schedule"
   resources :home do
     collection do
       get 'index'

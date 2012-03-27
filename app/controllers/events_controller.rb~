@@ -66,7 +66,21 @@ class EventsController < ApplicationController
   def create_event_entry
     
     @event = Event.new(params[:event])
-    @event.user = current_user
+    schedule_id = -1
+
+    if session[:managing_patient]
+      @event.user = User.find(session[:patient_id])
+      schedule_id = session[:patient_schedule_id]
+    else
+      @event.user = current_user
+      schedule_id = session[:schedule_id]
+    end
+
+    puts ".............................................."
+    puts "schedule id = #{schedule_id}"
+    puts "user id = #{@event.user.id}"
+    puts ".............................................."
+    
     @entry = @event.build_entry(params[:entry])
     
     respond_to do |format|
@@ -75,14 +89,14 @@ class EventsController < ApplicationController
         format.json { render json: @event, status: :created, location: @event }
         
         @entry.event_id = @event.id
-        @entry.schedule_id = session[:schedule_id]
+        @entry.schedule_id = schedule_id
         has_alert = params[:has_alert]
         
         if @entry.save
           if has_alert
             @alert = @event.create_alert(params[:alert])
             @alert.name = @event.name
-            @alert.alert_time = @entry.start_date + " " + @entry.start_time
+            @alert.alert_time = @entry.start_time
             @alert.save
 
             UserMailer.enqueue_alert_email(current_user, @alert)

@@ -66,7 +66,16 @@ class EventsController < ApplicationController
   def create_event_entry
     
     @event = Event.new(params[:event])
-    @event.user = current_user
+    schedule_id = -1
+
+    if session[:managing_patient]
+      @event.user = User.find(session[:patient_id])
+      schedule_id = session[:patient_schedule_id]
+    else
+      @event.user = current_user
+      schedule_id = session[:schedule_id]
+    end
+    
     @entry = @event.build_entry(params[:entry])
     
     respond_to do |format|
@@ -75,7 +84,7 @@ class EventsController < ApplicationController
         format.json { render json: @event, status: :created, location: @event }
         
         @entry.event_id = @event.id
-        @entry.schedule_id = session[:schedule_id]
+        @entry.schedule_id = schedule_id
         has_alert = params[:has_alert]
         
         if @entry.save

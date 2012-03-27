@@ -1,5 +1,9 @@
-<h1>New caregiver_request</h1>
+<%= render 'sidenav' %>
+
+<div class="page_content">
 
 <%= render 'form' %>
 
 <%= link_to 'Back', '/manage_caregiver' %>
+
+</div>

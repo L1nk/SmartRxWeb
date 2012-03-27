@@ -1,13 +1,9 @@
-class HomeController < ApplicationController
-  
+class ManageCaregiverController < ApplicationController
   def index
-    
-    get_schedule_info(current_user)
+  end
 
-    if session[:managing_patient]
-      session[:managing_patient] = false
-      session[:patient_id] = -1
-    end
+  def patients
+    get_patients()
     
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +11,25 @@ class HomeController < ApplicationController
     end
   end
 
-  #helper functions
+  def patient_schedule
+    user = User.find(params[:id])
+    
+    get_schedule_info(user)
+
+    session[:managing_patient] = true
+    session[:patient_id] = user.id
+    session[:patient_schedule_id] = 
+
+    respond_to do |format|
+      format.html # patient_schedule.html.erb
+      format.json { render json: @all_entries }
+    end
+  end
+
+  def get_patients()
+    @patients = User.all(:conditions => ["caregiver_id = ?", current_user.id])
+  end
+
   def get_schedule_info(user)
     schedule = Schedule.all(:conditions => ["user_id = ?", user.id])
     @schedule = schedule[0]
@@ -38,5 +52,4 @@ class HomeController < ApplicationController
       count += 1
     end
   end
-
 end
