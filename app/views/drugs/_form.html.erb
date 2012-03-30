@@ -1,0 +1,33 @@
+<%= form_for(@drug) do |f| %>
+  <% if @drug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drug.errors.count, "error") %> prohibited this drug from being saved:</h2>
+
+      <ul>
+      <% @drug.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :directions %><br />
+    <%= f.text_area :directions %>
+  </div>
+  <div class="field">
+    <%= f.label :with_meal %><br />
+    <%= f.check_box :with_meal %>
+  </div>
+  <div class="field">
+    <%= f.label :importance %><br />
+    <%= f.select :importance, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

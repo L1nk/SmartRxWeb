@@ -1,9 +1,9 @@
 <div class="sidenav">
 <ul class="sidenav">
   <li><%= link_to 'Home', '/home' %></li>
-  <li><%= link_to 'Add Medication', new_medication_path %></li>
+  <li><%= link_to 'Add Medication', new_schedule_drugs_path %></li>
   <li><%= link_to 'Add Event', new_event_path %></li>
-  <li><%= link_to 'Medications List', 'medications_list' %></li>
-  <li><%= link_to 'Events List', 'events_list' %></li>
+  <li><%= link_to 'Medications List', '/medications_list' %></li>
+  <li><%= link_to 'Events List', '/events_list' %></li>
 </ul>
 </div>

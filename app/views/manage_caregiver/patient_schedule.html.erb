@@ -16,8 +16,8 @@
             <% if entry.event %>
               <li><%= link_to h(entry.event.name), entry.event %></li>
             <% end %>
-            <% if entry.medication %>
-              <li><%= link_to h(entry.medication.name), entry.medication %></li>
+            <% if entry.schedule_drug %>
+              <li><%= link_to h(entry.schedule_drug.drug.name), entry.schedule_drug %></li>
             <% end %>
           <% end %>
         </ul>

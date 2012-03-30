@@ -6,15 +6,15 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1 class="section_title">Medication List</h1>
+<h1 class="section_title">Scheduled Drugs List</h1>
 
 <ul class="med_list">
-<% @medications.each do |medication| %>
+<% @schedule_drugs.each do |schedule_drug| %>
   <li>
     <ul class="med_item">
-      <li><h3><%= medication.name %></h3></li>
-      <li><%= link_to 'edit', edit_medication_path(medication.id), {:method => :get} %></li>
-      <li><%= link_to 'delete', medication, confirm: 'Are you sure?', method: :delete %></li>
+      <li><h3><%= schedule_drug.drug.name %></h3></li>
+      <li><%= link_to 'edit', edit_schedule_drug_path(schedule_drug.id), {:method => :get} %></li>
+      <li><%= link_to 'delete', schedule_drug, confirm: 'Are you sure?', method: :delete %></li>
     </ul>
   </li>
 <% end %>

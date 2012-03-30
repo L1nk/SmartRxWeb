@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323175634) do
+ActiveRecord::Schema.define(:version => 20120327214738) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "event_id"
-    t.integer  "medication_id"
+    t.integer  "schedule_drug_id"
     t.string   "name"
     t.string   "alert_type"
     t.integer  "user_id"
     t.boolean  "is_dismissed"
     t.datetime "alert_time"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "caregiver_permission_levels", :force => true do |t|
@@ -66,16 +66,25 @@ ActiveRecord::Schema.define(:version => 20120323175634) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "drugs", :force => true do |t|
+    t.string   "name"
+    t.text     "directions"
+    t.boolean  "with_meal"
+    t.integer  "importance"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "entries", :force => true do |t|
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "event_id"
-    t.integer  "medication_id"
+    t.integer  "schedule_drug_id"
     t.integer  "schedule_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "event_conflicts", :force => true do |t|
@@ -102,17 +111,14 @@ ActiveRecord::Schema.define(:version => 20120323175634) do
     t.datetime "updated_at",     :null => false
   end
 
-  create_table "medications", :force => true do |t|
+  create_table "schedule_drugs", :force => true do |t|
     t.integer  "user_id"
     t.integer  "alert_id"
     t.integer  "entry_id"
-    t.string   "name"
-    t.string   "importance"
-    t.float    "quantity_per_dose"
-    t.float    "number_of_doses"
-    t.boolean  "is_critical"
-    t.string   "directions"
     t.text     "comments"
+    t.integer  "drug_id"
+    t.string   "quantity_per_dose"
+    t.string   "number_of_doses"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end

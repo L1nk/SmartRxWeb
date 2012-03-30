@@ -7,7 +7,7 @@
 
 <p>
   <b>Medication id:</b>
-  <%= @alert.med_event_id %>
+  <%= @alert.medication_id %>
 </p>
 
 <p>

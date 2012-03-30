@@ -1,0 +1,33 @@
+<%= form_tag({:action => :update}, {:method => :put}) do %>
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= select "drug", "drug_id", @drugs %>
+  </div>
+  <div class="field">
+    <%= label_tag :quantity_per_dose %><br />
+    <%= text_field :schedule_drug, :quantity_per_dose %>
+  </div>
+  <div class="field">
+    <%= label_tag :number_of_doses %><br />
+    <%= text_field :schedule_drug, :number_of_doses %>
+  </div>
+  <div class="field">
+    <%= label_tag :comments %><br />
+    <%= text_area :schedule_drug, :comments %>
+  </div>
+  <div class="field">
+    <%= label_tag :start_time, "Start time: " %><br />
+    <%= datetime_select :entry, :start_time %>
+  </div>
+  <div class="field">
+    <%= label_tag :end_time, "End time: " %><br />
+    <%= datetime_select :entry, :end_time %>
+  </div>
+  <div class="field">
+    <%= label_tag :has_alert %><br />
+    <%= check_box_tag :has_alert, '1', @has_alert %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Update Scheduled Drug" %>
+  </div>
+<% end %>

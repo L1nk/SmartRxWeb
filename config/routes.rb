@@ -1,5 +1,7 @@
 Drugs::Application.routes.draw do
 
+  resources :drugs
+
   #get "manage_caregiver/index"
   match "manage_caregiver/patients" => "manage_caregiver#patients"
   match ":id/patient_schedule" => "manage_caregiver#patient_schedule"
@@ -88,9 +90,9 @@ Drugs::Application.routes.draw do
 
   resources :medication_conflicts
 
-  resources :medications
-  post "medications/new"
-  post "medications/create_medication_entry"
+  resources :schedule_drugs
+  post "schedule_drugs/new"
+  post "schedule_drugs/create_schedule_drug_entry"
 
   resources :alerts
 

@@ -1,0 +1,36 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Schedule Drug Name:</b>
+  <%= @schedule_drug.name %>
+</p>
+
+<p>
+  <b>Quantity per dose:</b>
+  <%= @schedule_drug.quantity_per_dose %>
+</p>
+
+<p>
+  <b>Number of doses:</b>
+  <%= @schedule_drug.number_of_doses %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @schedule_drug.comments %>
+</p>
+
+<p>
+  <b>Has Alert?</b>
+  <%= @schedule_drug.alert_id ? 'yes' : 'no' %>
+</p>
+
+
+<%= link_to 'Edit', edit_schedule_drug_path(@schedule_drug) %> |
+<%= link_to 'Back', schedule_drug_path %>
+
+</div>

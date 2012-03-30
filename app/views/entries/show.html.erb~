@@ -21,12 +21,12 @@
 </p>
 
 <p>
-  <b>Type:</b>
+  <b>Event id:</b>
   <%= @entry.event_id %>
 </p>
 
 <p>
-  <b>Type id:</b>
+  <b>Medication id:</b>
   <%= @entry.medication_id %>
 </p>
 

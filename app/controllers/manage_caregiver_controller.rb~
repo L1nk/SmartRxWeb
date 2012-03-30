@@ -18,7 +18,7 @@ class ManageCaregiverController < ApplicationController
 
     session[:managing_patient] = true
     session[:patient_id] = user.id
-    session[:patient_schedule_id] = 
+    session[:patient_schedule_id] = user.schedule_id
 
     respond_to do |format|
       format.html # patient_schedule.html.erb
@@ -35,7 +35,7 @@ class ManageCaregiverController < ApplicationController
     @schedule = schedule[0]
     
     event_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :event, :include => :event)
-    medication_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :medication, :include => :medication)
+    schedule_drug_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :schedule_drug, :include => :schedule_drug)
     
     @date = params[:month] ? Date.strptime(params[:month], '%Y-%m') : Date.today
 

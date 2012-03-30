@@ -1,8 +1,8 @@
-class CreateMedicationConflicts < ActiveRecord::Migration
+class CreateDrugConflicts < ActiveRecord::Migration
   def change
-    create_table :medication_conflicts do |t|
-      t.integer :medication1_id
-      t.boolean :medication2_id
+    create_table :drug_conflicts do |t|
+      t.integer :drug1_id
+      t.integer :drug2_id
 
       t.timestamps
     end

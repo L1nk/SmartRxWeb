@@ -35,7 +35,7 @@ class ManageCaregiverController < ApplicationController
     @schedule = schedule[0]
     
     event_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :event, :include => :event)
-    medication_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :medication, :include => :medication)
+    schedule_drug_entries = Entry.all(:conditions => ["schedule_id = ?", @schedule.id], :joins => :schedule_drug, :include => :schedule_drug)
     
     @date = params[:month] ? Date.strptime(params[:month], '%Y-%m') : Date.today
 
@@ -47,8 +47,8 @@ class ManageCaregiverController < ApplicationController
       count += 1
     end
 
-    for medication in medication_entries
-      @all_entries[count] = medication
+    for schedule_drug in schedule_drug_entries
+      @all_entries[count] = schedule_drug
       count += 1
     end
   end

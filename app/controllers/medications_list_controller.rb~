@@ -1,7 +1,5 @@
 class MedicationsListController < ApplicationController
   def index
-    @medications = Medication.all(:conditions => ["user_id = ?", current_user.id])
-    
-    
+    @schedule_drugs = ScheduleDrug.all(:conditions => ["user_id = ?", current_user.id])
   end
 end
