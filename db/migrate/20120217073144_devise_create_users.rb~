@@ -39,10 +39,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :caregiver_id
       t.string :fname
       t.string :lname
-      t.string :phone
-      t.string :fname
-      t.string :fname
-
+      t.string :phone_number
+      t.string :is_caregiver
+      t.string :has_caregiver
+      t.integer :schedule_id
+      t.boolean :has_schedule_drug_conflict
 
       t.timestamps
     end

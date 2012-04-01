@@ -43,7 +43,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :is_caregiver
       t.string :has_caregiver
       t.integer :schedule_id
-
+      t.boolean :has_schedule_drug_conflict, :default => false
 
       t.timestamps
     end

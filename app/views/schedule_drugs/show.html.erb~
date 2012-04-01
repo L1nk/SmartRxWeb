@@ -5,11 +5,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Schedule Drug Name:</b>
-  <%= @schedule_drug.name %>
-</p>
-
-<p>
   <b>Quantity per dose:</b>
   <%= @schedule_drug.quantity_per_dose %>
 </p>

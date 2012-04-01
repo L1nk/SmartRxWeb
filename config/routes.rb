@@ -1,5 +1,12 @@
 Drugs::Application.routes.draw do
 
+  resources :schedule_drugs_conflicts do
+    collection do
+      get 'unresolved'
+      post 'unresolved'
+    end
+  end
+
   resources :drugs
 
   #get "manage_caregiver/index"

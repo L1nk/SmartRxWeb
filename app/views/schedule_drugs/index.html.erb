@@ -8,6 +8,7 @@
     <th>Quantity Per Dose</th>
     <th>Number of Doses</th>
     <th>Comments</th>
+    <th>Has conflict</th>
     <th>Drug id</th>
     <th></th>
     <th></th>
@@ -22,6 +23,7 @@
     <td><%= schedule_drug.quantity_per_dose %></td>
     <td><%= schedule_drug.number_of_doses %></td>
     <td><%= schedule_drug.comments %></td>
+    <td><%= schedule_drug.has_conflict %></td>
     <td><%= schedule_drug.drug_id %></td>
     <td><%= link_to 'Show', schedule_drug %></td>
     <td><%= link_to 'Edit', edit_schedule_drug_path(schedule_drug) %></td>

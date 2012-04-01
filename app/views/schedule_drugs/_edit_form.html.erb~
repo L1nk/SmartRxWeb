@@ -1,9 +1,9 @@
 <%= form_tag({:action => :update}, {:method => :put}) do %>
-    <div class="field">
-      <%= label_tag :name %><br />
-      <%= select "drug", "drug_id", @drugs %>
-    </div>
-    <div class="field">
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= select "drug", "drug_id", @drugs %>
+  </div>
+  <div class="field">
     <%= label_tag :quantity_per_dose %><br />
     <%= text_field :schedule_drug, :quantity_per_dose %>
   </div>

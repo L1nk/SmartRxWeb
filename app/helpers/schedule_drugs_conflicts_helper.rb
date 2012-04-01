@@ -1,0 +1,2 @@
+module ScheduleDrugsConflictsHelper
+end

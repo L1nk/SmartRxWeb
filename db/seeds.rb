@@ -30,6 +30,8 @@ CaregiverRequest.delete_all
 
 Drug.delete_all
 
+ScheduleDrugsConflict.delete_all
+
 #1
 Drug.create(name: 'Advil',
             directions: '',

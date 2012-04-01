@@ -8,6 +8,7 @@ class CreateScheduleDrugs < ActiveRecord::Migration
       t.integer :drug_id
       t.string :quantity_per_dose
       t.string :number_of_doses
+      t.boolean :has_conflict, :default => false
       
       t.timestamps
     end

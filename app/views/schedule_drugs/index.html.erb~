@@ -8,6 +8,7 @@
     <th>Quantity Per Dose</th>
     <th>Number of Doses</th>
     <th>Comments</th>
+    <th>Has conflict</th>
     <th>Drug id</th>
     <th></th>
     <th></th>
@@ -19,7 +20,6 @@
     <td><%= schedule_drug.user_id %></td>
     <td><%= schedule_drug.alert_id %></td>
     <td><%= schedule_drug.entry_id %></td>
-    <td><%= schedule_drug.name %></td>
     <td><%= schedule_drug.quantity_per_dose %></td>
     <td><%= schedule_drug.number_of_doses %></td>
     <td><%= schedule_drug.comments %></td>

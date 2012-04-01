@@ -75,7 +75,6 @@ class ScheduleDrugsController < ApplicationController
     drug_id = params[:drug][:drug_id]
     @schedule_drug.drug_id = drug_id
     
-    
     if session[:managing_patient]
       @schedule_drug.user = User.find(session[:patient_id])
       schedule_id = session[:patient_schedule_id]
@@ -85,6 +84,10 @@ class ScheduleDrugsController < ApplicationController
     end
     
     @entry = @schedule_drug.build_entry(params[:entry])
+    
+    end_time = params[:entry][:start_time]
+    
+    @entry.end_time = end_time
     
     respond_to do |format|
       if @schedule_drug.save

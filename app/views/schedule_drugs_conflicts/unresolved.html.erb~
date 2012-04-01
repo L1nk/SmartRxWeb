@@ -1,0 +1,8 @@
+<%= render 'sidenav' %>
+
+<div class="page_content">
+  <% for conflict in @conflicts %>
+    <%= conflict[0].drug.name %>
+    <%= conflict[1].drug.name %>
+  <% end %>
+</div>
