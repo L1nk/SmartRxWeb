@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     get_schedule_info(current_user)
     
     schedule_drugs = ScheduleDrug.all(:conditions => ["user_id = ?", current_user.id])
+    conflict_exists = false
     for schedule_drug1 in schedule_drugs
       for schedule_drug2 in schedule_drugs
 
@@ -20,56 +21,55 @@ class HomeController < ApplicationController
             end
           end
 
-          diff = schedule_drug1.entry.start_time - schedule_drug2.entry.start_time
-          
-          #make sure the conflict doesn't already exist
-          schedule_drug_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug1_id = ?", schedule_drug1.id])
-          for conflict in schedule_drug_conflicts
-            if conflict.schedule_drug2_id == schedule_drug2.id
-              conflict_possible = false
-              break
+          if conflict_possible
+            
+            diff = schedule_drug1.entry.start_time - schedule_drug2.entry.start_time
+            
+            #make sure the conflict doesn't already exist
+            schedule_drug_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug1_id = ?", schedule_drug1.id])
+            for conflict in schedule_drug_conflicts
+              if conflict.schedule_drug2_id == schedule_drug2.id
+                conflict_possible = false
+                conflict_exists = true
+                break
+              end
             end
-          end
 
-          schedule_drug_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug2_id = ?", schedule_drug1.id])
-          for conflict in schedule_drug_conflicts
-            if conflict.schedule_drug1_id == schedule_drug2.id
-              conflict_possible = false
-              break
+            schedule_drug_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug2_id = ?", schedule_drug1.id])
+            for conflict in schedule_drug_conflicts
+              if conflict.schedule_drug1_id == schedule_drug2.id
+                conflict_possible = false
+                conflict_exists = true
+                break
+              end
             end
-          end
           
-          #add conflict to table if it doesn't exist
-          if conflict_possible && diff.abs < 3600
-            conflict = ScheduleDrugsConflict.create(schedule_drug1_id: schedule_drug1.id,
-						    schedule_drug2_id: schedule_drug2.id,
-						    reason: "time conflict")
-            conflict.user_id = current_user.id
-            conflict.save
+            #add conflict to table if it doesn't exist
+            if conflict_possible && diff.abs < 3600
+              conflict = ScheduleDrugsConflict.create(schedule_drug1_id: schedule_drug1.id,
+						      schedule_drug2_id: schedule_drug2.id,
+						      reason: "time conflict")
+              conflict.user_id = current_user.id
+              conflict.save
 
-            schedule_drug1.has_conflict = true
-            schedule_drug1.save
+              schedule_drug1.has_conflict = true
+              schedule_drug1.save
 
-            schedule_drug2.has_conflict = true
-            schedule_drug2.save
+              schedule_drug2.has_conflict = true
+              schedule_drug2.save
 
-            relation1 = ScheduleDrugsConflictManagement.new
-            relation1.schedule_drug = schedule_drug1
-            relation1.schedule_drugs_conflict = conflict
-            relation1.save
-
-            relation2 = ScheduleDrugsScheduleDrugsConflict.new
-            relation2.schedule_drug = schedule_drug2
-            relation2.schedule_drugs_conflict = conflict
-            relation2.save
-
-            current_user.has_schedule_drug_conflict = true
-            current_user.save
-          end
+              current_user.has_schedule_drug_conflict = true
+              current_user.save
+            end
           
+          end #conflict_possible
         end
+      end #inner for
+    end #outer for
 
-      end
+    if !conflict_exists
+      current_user.has_schedule_drug_conflict = false
+      current_user.save
     end
     
     if session[:managing_patient]

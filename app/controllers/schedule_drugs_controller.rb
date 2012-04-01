@@ -44,6 +44,8 @@ class ScheduleDrugsController < ApplicationController
     alerts = Alert.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
     @alert_first = alerts[0]
     
+    @drugs = Drug.all.map { |d| [d.name, d.id] }
+    
     if @alert_first
       @has_alert = true
     end

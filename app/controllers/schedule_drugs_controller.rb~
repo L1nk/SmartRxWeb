@@ -43,6 +43,8 @@ class ScheduleDrugsController < ApplicationController
     #checks to see if this medication has an alert to check the has_alert checkbox
     alerts = Alert.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
     @alert_first = alerts[0]
+
+    @drugs = Drug.all.map { |d| [d.name, d.id] }
     
     if @alert_first
       @has_alert = true
@@ -84,10 +86,6 @@ class ScheduleDrugsController < ApplicationController
     end
     
     @entry = @schedule_drug.build_entry(params[:entry])
-    
-    end_time = params[:entry][:start_time]
-    
-    @entry.end_time = end_time
     
     respond_to do |format|
       if @schedule_drug.save
