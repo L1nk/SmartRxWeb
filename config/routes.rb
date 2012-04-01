@@ -102,7 +102,8 @@ Drugs::Application.routes.draw do
   resources :schedule_drugs
   post "schedule_drugs/new"
   post "schedule_drugs/create_schedule_drug_entry"
-  match "schedule_drugs/:id/resolve" => "schedule_drugs#resolve"
+  match "schedule_drugs/:id/unresolved" => "schedule_drugs#unresolved"
+  match "schedule_drugs/:id/resolved" => "schedule_drugs#resolved"
 
   resources :alerts
 

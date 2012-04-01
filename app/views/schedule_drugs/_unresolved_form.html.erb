@@ -1,0 +1,10 @@
+<%= form_tag({:action => :update}, {:method => :put}) do %>
+  <div class="field">
+    <%= label_tag :start_time, "Start time: " %><br />
+    <%= datetime_select :entry, :start_time %>
+  </div>
+  <div class="actions">
+    <!-- need to change schedule_drugs/update if text of submit_tag is changed -->
+    <%= submit_tag "Resolve Drug" %>
+  </div>
+<% end %>

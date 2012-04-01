@@ -135,39 +135,79 @@ class ScheduleDrugsController < ApplicationController
     @schedule_drug = ScheduleDrug.find(params[:id])
     @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
 
-    drug_id = params[:drug][:drug_id]
-    @schedule_drug.drug_id = drug_id
 
-    alert_checked = params[:has_alert]
-    alerts = Alert.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
-    alert_exists = alerts[0]
-    
-    if alert_checked
-      if !alert_exists
-        alert = @schedule_drug.create_alert
-        @schedule_drug.alert_id = alert.id
-        @schedule_drug.save
-      end
-    else  
-      if alert_exists
-        @schedule_drug.alert_id = nil
-        @schedule_drug.save
-        Alert.delete(alert_exists.id)
-      end
-    end
-    
-    respond_to do |format|
-      if @schedule_drug.update_attributes(params[:schedule_drug])
-        format.html { redirect_to manage_entries_path, notice: 'Schedule Drug was successfully updated.' }
-        format.json { head :no_content }
+    if params[:commit] == "Update Scheduled Drug"
+      drug_id = params[:drug][:drug_id]
+      @schedule_drug.drug_id = drug_id
 
-        if @entry.update_attributes(params[:entry])
+      alert_checked = params[:has_alert]
+      alerts = Alert.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
+      alert_exists = alerts[0]
+    
+      if alert_checked
+        if !alert_exists
+          alert = @schedule_drug.create_alert
+          @schedule_drug.alert_id = alert.id
+          @schedule_drug.save
         end
-
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @schedule_drug.errors, status: :unprocessable_entity }
+      else  
+        if alert_exists
+          @schedule_drug.alert_id = nil
+          @schedule_drug.save
+          Alert.delete(alert_exists.id)
+        end
       end
+      
+      respond_to do |format|
+        if @schedule_drug.update_attributes(params[:schedule_drug])
+          format.html { redirect_to manage_entries_path, notice: 'Schedule Drug was successfully updated.' }
+          format.json { head :no_content }
+
+          if @entry.update_attributes(params[:entry])
+          end
+
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @schedule_drug.errors, status: :unprocessable_entity }
+        end
+      end
+      
+    elsif params[:commit] == "Resolve Drug"
+      @schedule_drug = ScheduleDrug.find(params[:id])
+      @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
+
+      respond_to do |format|
+        if @entry.update_attributes(params[:entry])
+
+          #update the schedule_drugs_conflict table
+          schedule_drugs_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug1_id = ? or schedule_drug2_id = ?", @schedule_drug.id, @schedule_drug.id])
+
+          for conflict in schedule_drugs_conflicts
+            if conflict.schedule_drug1_id == @schedule_drug.id
+              schedule_drug1 = ScheduleDrug.find(conflict.schedule_drug1_id)
+              schedule_drug2 = ScheduleDrug.find(conflict.schedule_drug2_id)
+              drug_time_conflict = DrugTimeConflict.find(:first, :conditions => ["drug1_id = ? and drug2_id = ?", schedule_drug1.drug_id, schedule_drug2.drug_id])
+
+              new_diff = schedule_drug1.entry.start_time - schedule_drug2.entry.start_time
+
+              if new_diff.abs > drug_time_conflict.conflict_time
+                ScheduleDrugsConflict.delete_all(:schedule_drug1_id => schedule_drug1.id, :schedule_drug2_id => schedule_drug2.id)
+              else
+                puts "conflict still exists!"
+              end
+            else
+            end
+          end
+
+          format.html { redirect_to manage_entries_path, notice: 'Schedule Drug Entry was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @entry.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      puts "unknown commit for update schedule_drugs"
     end
   end
 
@@ -183,25 +223,15 @@ class ScheduleDrugsController < ApplicationController
     end
   end
 
-  # GET /schedule_drugs/1/resolve
-  def resolve
+  # GET /schedule_drugs/1/unresolved
+  def unresolved
     @schedule_drug = ScheduleDrug.find(params[:id])
     @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
+  end
 
+  # GET /schedule_drugs/1/resolve
+  def resolve
     
   end
 
-  def update_resolve
-    @schedule_drug = ScheduleDrug.find(params[:id])
-    @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
-
-    respond_to do |format|
-      if @entry.update_attributes(params[:entry])
-        
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @schedule_drug.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 end

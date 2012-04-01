@@ -1,4 +1,4 @@
-<%= form_tag({:action => :update_resolve}, {:method => :put}) do %>
+<%= form_tag({:action => :update}, {:method => :put}) do %>
   <div class="field">
     <%= label_tag :name %><br />
     <%= select "drug", "drug_id", @drugs %>
@@ -24,6 +24,6 @@
     <%= check_box_tag :has_alert, '1', @has_alert %>
   </div>
   <div class="actions">
-    <%= submit_tag "Update Scheduled Drug" %>
+    <%= submit_tag "Update Scheduled Drug" #need to change schedule_drugs_controller/update if the text is changed %>
   </div>
 <% end %>
