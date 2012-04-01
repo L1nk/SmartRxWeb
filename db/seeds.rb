@@ -32,70 +32,99 @@ Drug.delete_all
 
 ScheduleDrugsConflict.delete_all
 
+DrugTimeConflict.delete_all
+
 #1
-Drug.create(name: 'Advil',
+drug1 = Drug.create(name: 'Advil',
             directions: '',
             with_meal: true,
             importance: 1)
 
-Drug.create(name: 'Tylenol',
+drug2 = Drug.create(name: 'Tylenol',
             directions: '',
             with_meal: true,
             importance: 1)
 
-Drug.create(name: 'Aspirin',
+drug3 = Drug.create(name: 'Aspirin',
             directions: '',
             with_meal: true,
             importance: 2)
 
-Drug.create(name: 'Abilify',
+drug4 = Drug.create(name: 'Abilify',
             directions: 'take once a day',
             with_meal: false,
             importance: 4)
 
 #5
-Drug.create(name: 'Benadryl',
+drug5 = Drug.create(name: 'Benadryl',
             directions: "Don't exceed 300mg daily. Dose taken every 4-6 hours",
             with_meal: false,
             importance: 3)
 
-Drug.create(name: 'Zantac',
+drug6 = Drug.create(name: 'Zantac',
             directions: "Don't take with iron salts, itraconazole, and ketoconazole",
             with_meal: false,
             importance: 5)
 
-Drug.create(name: 'Itraconazole',
+drug7 = Drug.create(name: 'Itraconazole',
             directions: "Usually 200-400mg daily as a single dose or two divided doses. Must be takent with a full meal.",
             with_meal: true,
             importance: 4)
 
-Drug.create(name: 'Ketoconazole',
+drug8 = Drug.create(name: 'Ketoconazole',
             directions: "Usually 200-400mg daily.",
             with_meal: false,
             importance: 4)
 
-Drug.create(name: 'Lamprene',
+drug9 = Drug.create(name: 'Lamprene',
             directions: "Take once a day. It may be necessary to take this medication for up to 2 to 3 years.",
             with_meal: true,
             importance: 4)
 
 #10
-Drug.create(name: 'Warfarin',
+drug10 = Drug.create(name: 'Warfarin',
             directions: "",
             with_meal: false,
             importance: 5)
 
-MedicationConflict.create(medication1_id: 1,
-                          medication2_id: 10)
+#Drug conflicts
+MedicationConflict.create(medication1_id: drug1.id,
+                          medication2_id: drug10.id,
+			  conflict_type: 1)
 
-MedicationConflict.create(medication1_id: 2,
-                          medication2_id: 10)
+MedicationConflict.create(medication1_id: drug2.id,
+                          medication2_id: drug10.id,
+			  conflict_type: 1)
 
-MedicationConflict.create(medication1_id: 3,
-                          medication2_id: 10)
+MedicationConflict.create(medication1_id: drug3.id,
+                          medication2_id: drug10.id,
+			  conflict_type: 1)
 
-MedicationConflict.create(medication1_id: 6,
-                          medication2_id: 7)
+MedicationConflict.create(medication1_id: drug6.id,
+                          medication2_id: drug7.id,
+			  conflict_type: 1)
 
-MedicationConflict.create(medication1_id: 6,
-                          medication2_id: 8)
+MedicationConflict.create(medication1_id: drug6.id,
+                          medication2_id: drug8.id,
+			  conflict_type: 1)
+
+#Drug time conflicts
+DrugTimeConflict.create(drug1_id: drug1.id,
+                        drug2_id: drug10.id,
+                        conflict_time: 3600)
+
+DrugTimeConflict.create(drug1_id: drug2.id,
+                        drug2_id: drug10.id,
+                        conflict_time: 7200)
+
+DrugTimeConflict.create(drug1_id: drug3.id,
+                        drug2_id: drug10.id,
+                        conflict_time: 10800)
+
+DrugTimeConflict.create(drug1_id: drug6.id,
+                        drug2_id: drug7.id,
+                        conflict_time: 1800)
+
+DrugTimeConflict.create(drug1_id: drug6.id,
+                        drug2_id: drug8.id,
+                        conflict_time: 5000)

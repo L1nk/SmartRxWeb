@@ -10,14 +10,16 @@ class HomeController < ApplicationController
       for schedule_drug2 in schedule_drugs
 
         #make sure we're not comparing the same schedule_drug
-        if schedule_drug1.id != schedule_drug2.id && schedule_drug1.id < schedule_drug2.id
-          
+        if schedule_drug1.id != schedule_drug2.id && schedule_drug1.drug_id < schedule_drug2.drug_id
+
           med_conflicts = MedicationConflict.all
+          conflict_type = -1
 
           conflict_possible = false
           for conflict in med_conflicts
             if conflict.medication1_id == schedule_drug1.drug_id && conflict.medication2_id == schedule_drug2.drug_id
               conflict_possible = true
+              conflict_type = conflict.conflict_type
             end
           end
 
@@ -26,42 +28,48 @@ class HomeController < ApplicationController
             diff = schedule_drug1.entry.start_time - schedule_drug2.entry.start_time
             
             #make sure the conflict doesn't already exist
-            schedule_drug_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug1_id = ?", schedule_drug1.id])
-            for conflict in schedule_drug_conflicts
-              if conflict.schedule_drug2_id == schedule_drug2.id
-                conflict_possible = false
-                conflict_exists = true
-                break
-              end
+            schedule_drugs_conflict = ScheduleDrugsConflict.find(:first, :conditions => ["schedule_drug1_id = ? and schedule_drug2_id = ?", schedule_drug1.id, schedule_drug2.id])
+
+            if schedule_drugs_conflict
+              conflict_possible = false
+              conflict_exists = true
             end
 
-            schedule_drug_conflicts = ScheduleDrugsConflict.all(:conditions => ["schedule_drug2_id = ?", schedule_drug1.id])
-            for conflict in schedule_drug_conflicts
-              if conflict.schedule_drug1_id == schedule_drug2.id
-                conflict_possible = false
-                conflict_exists = true
-                break
-              end
+            schedule_drugs_conflict = ScheduleDrugsConflict.find(:first, :conditions => ["schedule_drug1_id = ? and schedule_drug2_id = ?", schedule_drug2.id, schedule_drug1.id])
+
+            if schedule_drugs_conflict
+              conflict_possible = false
+              conflict_exists = true
             end
-          
+            
             #add conflict to table if it doesn't exist
-            if conflict_possible && diff.abs < 3600
-              conflict = ScheduleDrugsConflict.create(schedule_drug1_id: schedule_drug1.id,
-						      schedule_drug2_id: schedule_drug2.id,
-						      reason: "time conflict")
-              conflict.user_id = current_user.id
-              conflict.save
+            if conflict_possible
+              case conflict_type
+	      when 1 # case of time conflict between two drugs
+                conflict = DrugTimeConflict.find(:first, :conditions => ["drug1_id = ? and drug2_id = ?", schedule_drug1.drug_id, schedule_drug2.drug_id])
+                
+                if diff.abs < conflict.conflict_time
+                  conflict = ScheduleDrugsConflict.create(schedule_drug1_id: schedule_drug1.id,
+						          schedule_drug2_id: schedule_drug2.id,
+						          reason: "time conflict")
+	          conflict.user_id = current_user.id
+	          conflict.save
 
-              schedule_drug1.has_conflict = true
-              schedule_drug1.save
+	          schedule_drug1.has_conflict = true
+	          schedule_drug1.save
 
-              schedule_drug2.has_conflict = true
-              schedule_drug2.save
+	          schedule_drug2.has_conflict = true
+	          schedule_drug2.save
 
-              current_user.has_schedule_drug_conflict = true
-              current_user.save
-            end
-          
+	          current_user.has_schedule_drug_conflict = true
+	          current_user.save
+	          
+	          conflict_exists = true
+                end
+              else
+                puts "invalid type"
+              end #end of case statement
+            end #conflict_possible
           end #conflict_possible
         end
       end #inner for

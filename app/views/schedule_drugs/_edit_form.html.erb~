@@ -1,4 +1,4 @@
-<%= form_tag({:action => :update}, {:method => :put}) do %>
+<%= form_tag({:action => :update_resolve}, {:method => :put}) do %>
   <div class="field">
     <%= label_tag :name %><br />
     <%= select "drug", "drug_id", @drugs %>
@@ -18,10 +18,6 @@
   <div class="field">
     <%= label_tag :start_time, "Start time: " %><br />
     <%= datetime_select :entry, :start_time %>
-  </div>
-  <div class="field">
-    <%= label_tag :end_time, "End time: " %><br />
-    <%= datetime_select :entry, :end_time %>
   </div>
   <div class="field">
     <%= label_tag :has_alert %><br />

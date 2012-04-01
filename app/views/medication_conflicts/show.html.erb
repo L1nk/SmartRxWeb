@@ -10,6 +10,11 @@
   <%= @medication_conflict.medication2_id %>
 </p>
 
+<p>
+  <b>Conflict type:</b>
+  <%= @medication_conflict.conflict_type %>
+</p>
+
 
 <%= link_to 'Edit', edit_medication_conflict_path(@medication_conflict) %> |
 <%= link_to 'Back', medication_conflicts_path %>

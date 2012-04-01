@@ -37,8 +37,7 @@ class ScheduleDrugsController < ApplicationController
   # GET /schedule_drug/1/edit
   def edit
     @schedule_drug = ScheduleDrug.find(params[:id])
-    entries = Entry.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
-    @entry = entries[0]
+    @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
     
     #checks to see if this medication has an alert to check the has_alert checkbox
     alerts = Alert.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
@@ -134,8 +133,7 @@ class ScheduleDrugsController < ApplicationController
 
   def update
     @schedule_drug = ScheduleDrug.find(params[:id])
-    entries = Entry.all(:conditions => ["schedule_drug_id = ?", @schedule_drug.id])
-    @entry = entries[0]
+    @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
 
     drug_id = params[:drug][:drug_id]
     @schedule_drug.drug_id = drug_id
@@ -183,5 +181,13 @@ class ScheduleDrugsController < ApplicationController
       format.html { redirect_to manage_entries_path }
       format.json { head :no_content }
     end
+  end
+
+  # GET /schedule_drugs/1/resolve
+  def resolve
+    @schedule_drug = ScheduleDrug.find(params[:id])
+    @entry = Entry.find(:first, :conditions => ["schedule_drug_id = ?", @schedule_drug.id])
+
+    
   end
 end

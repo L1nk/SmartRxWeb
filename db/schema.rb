@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401044433) do
+ActiveRecord::Schema.define(:version => 20120401080505) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "event_id"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20120401044433) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "drug_time_conflicts", :force => true do |t|
+    t.integer  "drug1_id"
+    t.integer  "drug2_id"
+    t.integer  "conflict_time"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "drugs", :force => true do |t|
     t.string   "name"
     t.text     "directions"
@@ -107,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20120401044433) do
   create_table "medication_conflicts", :force => true do |t|
     t.integer  "medication1_id"
     t.integer  "medication2_id"
+    t.integer  "conflict_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
@@ -131,13 +140,6 @@ ActiveRecord::Schema.define(:version => 20120401044433) do
     t.string   "reason"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-  end
-
-  create_table "schedule_to_alerts", :force => true do |t|
-    t.integer  "schedule_id"
-    t.integer  "alert_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "schedules", :force => true do |t|

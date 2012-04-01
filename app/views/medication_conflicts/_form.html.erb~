@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :medication2_id %><br />
-    <%= f.check_box :medication2_id %>
+    <%= f.number_field :medication2_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

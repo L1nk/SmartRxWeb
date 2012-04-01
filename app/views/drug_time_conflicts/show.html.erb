@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Drug1:</b>
+  <%= @drug_time_conflict.drug1_id %>
+</p>
+
+<p>
+  <b>Drug2:</b>
+  <%= @drug_time_conflict.drug2_id %>
+</p>
+
+<p>
+  <b>Conflict time:</b>
+  <%= @drug_time_conflict.conflict_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_drug_time_conflict_path(@drug_time_conflict) %> |
+<%= link_to 'Back', drug_time_conflicts_path %>

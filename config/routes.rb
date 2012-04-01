@@ -1,5 +1,7 @@
 Drugs::Application.routes.draw do
 
+  resources :drug_time_conflicts
+
   resources :schedule_drugs_conflicts do
     collection do
       get 'unresolved'
@@ -100,6 +102,7 @@ Drugs::Application.routes.draw do
   resources :schedule_drugs
   post "schedule_drugs/new"
   post "schedule_drugs/create_schedule_drug_entry"
+  match "schedule_drugs/:id/resolve" => "schedule_drugs#resolve"
 
   resources :alerts
 

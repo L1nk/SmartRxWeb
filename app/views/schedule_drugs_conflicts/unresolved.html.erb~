@@ -6,7 +6,7 @@
     <% schedule_drug2 = conflict[1] %>
     Conflict between <%= schedule_drug1.drug.name %> and
     <%= schedule_drug2.drug.name %><br/>
-    <%= link_to 'edit ' + schedule_drug1.drug.name, "/drugs/#{schedule_drug1.id}/edit" %>
-    <%= link_to 'edit ' + schedule_drug2.drug.name, "/drugs/#{schedule_drug2.id}/edit" %>
+    <%= link_to 'edit ' + schedule_drug1.drug.name, "/schedule_drugs/#{schedule_drug1.id}/resolve" %>
+    <%= link_to 'edit ' + schedule_drug2.drug.name, "/schedule_drugs/#{schedule_drug2.id}/resolve" %><br/>
   <% end %>
 </div>

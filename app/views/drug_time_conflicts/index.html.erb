@@ -1,0 +1,27 @@
+<h1>Listing drug_time_conflicts</h1>
+
+<table>
+  <tr>
+    <th>Drug1</th>
+    <th>Drug2</th>
+    <th>Conflict time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drug_time_conflicts.each do |drug_time_conflict| %>
+  <tr>
+    <td><%= drug_time_conflict.drug1_id %></td>
+    <td><%= drug_time_conflict.drug2_id %></td>
+    <td><%= drug_time_conflict.conflict_time %></td>
+    <td><%= link_to 'Show', drug_time_conflict %></td>
+    <td><%= link_to 'Edit', edit_drug_time_conflict_path(drug_time_conflict) %></td>
+    <td><%= link_to 'Destroy', drug_time_conflict, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drug time conflict', new_drug_time_conflict_path %>

@@ -4,6 +4,7 @@
   <tr>
     <th>Medication1</th>
     <th>Medication2</th>
+    <th>Conflict type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= medication_conflict.medication1_id %></td>
     <td><%= medication_conflict.medication2_id %></td>
+    <td><%= medication_conflict.conflict_type %></td>
     <td><%= link_to 'Show', medication_conflict %></td>
     <td><%= link_to 'Edit', edit_medication_conflict_path(medication_conflict) %></td>
     <td><%= link_to 'Destroy', medication_conflict, confirm: 'Are you sure?', method: :delete %></td>
