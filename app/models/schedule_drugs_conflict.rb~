@@ -1,5 +1,0 @@
-class ScheduleDrugsConflict < ActiveRecord::Base
-  has_many :schedule_drugs_conflict_management
-  has_many :schedule_drugs, :through => :schedule_drugs_conflict_management, :foreign_key => :schedule_drug1_id
-  has_many :schedule_drugs, :through => :schedule_drugs_conflict_management, :foreign_key => :schedule_drug2_id
-end

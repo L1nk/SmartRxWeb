@@ -1,8 +1,0 @@
-<div class="sidenav">
-<ul class="sidenav">
-  <li><%= link_to 'Home', '/home' %></li>
-  <li><%= link_to 'Add Patient', new_caregiver_request_path %></li>
-  <li><%= link_to 'Manage Requests', '/caregiver_requests/manage' %></li>
-  <li><%= link_to 'Manage Patients', '' %></li>
-</ul>
-</div>
